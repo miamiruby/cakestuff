@@ -1,0 +1,91 @@
+8
+
+dir
+3
+http://cakeusermanagement.googlecode.com/svn/trunk
+http://cakeusermanagement.googlecode.com/svn
+
+
+
+2008-07-18T07:55:13.345520Z
+3
+bazil749
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+2eac3c9f-2a52-0410-be7d-1f39747550f6
+
+auth.sql
+file
+
+
+
+
+2008-10-22T23:23:44.000000Z
+0ee93e5cdb8f292402d842cca5d7916a
+2008-07-18T07:55:13.345520Z
+3
+bazil749
+
+app_controller
+dir
+
+models
+dir
+
+user_app_model.php
+file
+
+
+
+
+2008-10-22T23:23:44.000000Z
+c454aa8168aa8c87cf686795dfc8c2f0
+2008-07-18T07:55:13.345520Z
+3
+bazil749
+
+config
+dir
+
+controllers
+dir
+
+user_app_controller.php
+file
+
+
+
+
+2008-10-22T23:23:44.000000Z
+029d4d9765da4668233e96e5a0a79139
+2008-07-18T07:55:13.345520Z
+3
+bazil749
+
+readme.txt
+file
+
+
+
+
+2008-10-22T23:23:44.000000Z
+2f34091688df85dd37ad637be98d5862
+2008-07-18T07:55:13.345520Z
+3
+bazil749
+
+views
+dir
+
