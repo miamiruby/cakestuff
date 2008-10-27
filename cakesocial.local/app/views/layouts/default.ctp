@@ -39,7 +39,6 @@
 
 		echo $scripts_for_layout;
 	?>
-	<?php $firecake->view($this, 1); ?>
 </head>
 <body>
 	<div id="container">
@@ -62,6 +61,7 @@
 			?>
 		</div>
 	</div>
+	<?php $firecake->view($this); ?>
 	<?php echo $cakeDebug; ?>
 </body>
 </html>
