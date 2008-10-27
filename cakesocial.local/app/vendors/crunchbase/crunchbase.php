@@ -17,8 +17,8 @@ class crunchbase{
 
 	var $api_url = '{crunchbase_url}{version}{namespace}/{permalink}{type}';
 
-	var $searchquery = '{crunchbase_url}{version}search.js?query={keywords}&page={page}';
 	var $companies_url = '{crunchbase_url}{version}companies{type}';
+	var $search_url = '{crunchbase_url}{version}search{type}?query={keywords}';  //&page={page}
 
 	function getCompany($company){
 		$url = $this->fetchUrl('company', $company);
@@ -63,6 +63,18 @@ class crunchbase{
 		$url = str_replace("{type}", $this->type, $url);
 		$companies = $this->getData($url);
 		return $companies;
+	}
+
+	function search($keywords){
+		$url = $this->search_url;
+		$keywords = urlencode($keywords);
+		$url = str_replace('{crunchbase_url}', $this->apiurl, $url);	
+		$url = str_replace("{version}", $this->version, $url);
+		$url = str_replace("{type}", $this->type, $url);
+		$url = str_replace("{keywords}", $keywords, $url);
+	
+		return $this->getData($url);	
+		
 	}
 
 	function getData($url){
