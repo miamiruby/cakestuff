@@ -1,0 +1,487 @@
+<HTML>
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"></HEAD>
+<BODY>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Programmer's Reference Guide">
+<param name="Local" value="./index.html"></OBJECT></LI>
+<UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Zend_Gdata">
+<param name="Local" value="./zend.gdata.html"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Introduction to Gdata">
+<param name="Local" value="./zend.gdata.html#zend.gdata.introduction"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Structure of Zend_Gdata">
+<param name="Local" value="./zend.gdata.html#zend.gdata.introduction.structure"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Interacting with Google Services">
+<param name="Local" value="./zend.gdata.html#zend.gdata.introduction.services"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Obtaining instances of Zend_Gdata classes">
+<param name="Local" value="./zend.gdata.html#zend.gdata.introdduction.magicfactory"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Google Data Client Authentication">
+<param name="Local" value="./zend.gdata.html#zend.gdata.introduction.authentication"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Dependencies">
+<param name="Local" value="./zend.gdata.html#zend.gdata.introduction.dependencies"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Creating a new Gdata client">
+<param name="Local" value="./zend.gdata.html#zend.gdata.introduction.creation"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Common query parameters">
+<param name="Local" value="./zend.gdata.html#zend.gdata.introduction.parameters"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Fetching a feed">
+<param name="Local" value="./zend.gdata.html#zend.gdata.introduction.getfeed"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Working with multi-page feeds">
+<param name="Local" value="./zend.gdata.html#zend.gdata.introduction.paging"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Working with data in feeds and entries">
+<param name="Local" value="./zend.gdata.html#zend.gdata.introduction.usefeedentry"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Updating entries">
+<param name="Local" value="./zend.gdata.html#zend.gdata.introduction.updateentry"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Posting entries to Google servers">
+<param name="Local" value="./zend.gdata.html#zend.gdata.introduction.post"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Deleting entries on Google servers">
+<param name="Local" value="./zend.gdata.html#zend.gdata.introduction.delete"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Authenticating with AuthSub">
+<param name="Local" value="./zend.gdata.authsub.html"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Creating an AuthSub authenticated Http Client">
+<param name="Local" value="./zend.gdata.authsub.html#zend.gdata.authsub.login"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Revoking AuthSub authentication">
+<param name="Local" value="./zend.gdata.authsub.html#zend.gdata.authsub.logout"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Authenticating with ClientLogin">
+<param name="Local" value="./zend.gdata.clientlogin.html"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Creating a ClientLogin authenticated Http Client">
+<param name="Local" value="./zend.gdata.clientlogin.html#zend.gdata.clientlogin.login"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Terminating a ClientLogin authenticated Http Client">
+<param name="Local" value="./zend.gdata.clientlogin.html#zend.gdata.clientlogin.terminating"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Using Google Calendar">
+<param name="Local" value="./zend.gdata.calendar.html"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Connecting To The Calendar Service">
+<param name="Local" value="./zend.gdata.calendar.html#zend.gdata.calendar.connecting"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Authentication">
+<param name="Local" value="./zend.gdata.calendar.html#zend.gdata.calendar.connecting.authentication"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Creating A Service Instance">
+<param name="Local" value="./zend.gdata.calendar.html#zend.gdata.calendar.connecting.service"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving A Calendar List">
+<param name="Local" value="./zend.gdata.calendar.html#zend.gdata.calendar_retrieval"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving Events">
+<param name="Local" value="./zend.gdata.calendar.html#zend.gdata.event_retrieval"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Queries">
+<param name="Local" value="./zend.gdata.calendar.html#zend.gdata.event_retrieval.queries"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving Events In Order Of Start Time">
+<param name="Local" value="./zend.gdata.calendar.html#zend.gdata.event_retrieval.start_time"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving Events In A Specified Date Range">
+<param name="Local" value="./zend.gdata.calendar.html#zend.gdata.event_retrieval.date_range"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving Events By Fulltext Query">
+<param name="Local" value="./zend.gdata.calendar.html#zend.gdata.event_retrieval.fulltext"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving Individual Events">
+<param name="Local" value="./zend.gdata.calendar.html#zend.gdata.event_retrieval.individual"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Creating Events">
+<param name="Local" value="./zend.gdata.calendar.html#zend.gdata.calendar.creating_events"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Creating Single-Occurrence Events">
+<param name="Local" value="./zend.gdata.calendar.html#zend.gdata.calendar.creating_events.single"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Event Schedules and Reminders">
+<param name="Local" value="./zend.gdata.calendar.html#zend.gdata.calendar.creating_events.schedulers_reminders"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Creating Recurring Events">
+<param name="Local" value="./zend.gdata.calendar.html#zend.gdata.calendar.creating_events.recurring"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Using QuickAdd">
+<param name="Local" value="./zend.gdata.calendar.html#zend.gdata.calendar.creating_events.quickadd"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Modifying Events">
+<param name="Local" value="./zend.gdata.calendar.html#zend.gdata.calendar.modifying_events"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Deleting Events">
+<param name="Local" value="./zend.gdata.calendar.html#zend.gdata.calendar.deleting_events"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Accessing Event Comments">
+<param name="Local" value="./zend.gdata.calendar.html#zend.gdata.calendar.comments"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Using Google Documents List Data API">
+<param name="Local" value="./zend.gdata.docs.html"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Get a List of Documents">
+<param name="Local" value="./zend.gdata.docs.html#zend.gdata.docs.listdocuments"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Upload a Document">
+<param name="Local" value="./zend.gdata.docs.html#zend.gdata.docs.creating"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Searching the documents feed">
+<param name="Local" value="./zend.gdata.docs.html#zend.gdata.docs.queries"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Get a List of Word Processing Documents">
+<param name="Local" value="./zend.gdata.docs.html#zend.gdata.docs.listwpdocuments"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Get a List of Spreadsheets">
+<param name="Local" value="./zend.gdata.docs.html#zend.gdata.docs.listspreadsheets"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Performing a text query">
+<param name="Local" value="./zend.gdata.docs.html#zend.gdata.docs.textquery"></OBJECT></LI>
+</UL></UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Using Google Spreadsheets">
+<param name="Local" value="./zend.gdata.spreadsheets.html"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Create a Spreadsheet">
+<param name="Local" value="./zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.creating"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Get a List of Spreadsheets">
+<param name="Local" value="./zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.listspreadsheets"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Get a List of Worksheets">
+<param name="Local" value="./zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.listworksheets"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Interacting With List-based Feeds">
+<param name="Local" value="./zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.listfeeds"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Get a List-based Feed">
+<param name="Local" value="./zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.listfeeds.get"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Reverse-sort Rows">
+<param name="Local" value="./zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.listfeeds.reverse"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Send a Structured Query">
+<param name="Local" value="./zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.listfeeds.sq"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Add a Row">
+<param name="Local" value="./zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.listfeeds.addrow"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Edit a Row">
+<param name="Local" value="./zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.listfeeds.editrow"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Delete a Row">
+<param name="Local" value="./zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.listfeeds.deleterow"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Interacting With Cell-based Feeds">
+<param name="Local" value="./zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.cellfeeds"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Get a Cell-based Feed">
+<param name="Local" value="./zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.cellfeeds.get"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Send a Cell Range Query">
+<param name="Local" value="./zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.cellfeeds.cellrangequery"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Change Contents of a Cell">
+<param name="Local" value="./zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.cellfeeds.updatecell"></OBJECT></LI>
+</UL></UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Using Google Apps Provisioning">
+<param name="Local" value="./zend.gdata.gapps.html"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Setting the current domain">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.domain"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Setting the domain for the service class">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.domain.service"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Setting the domain for query classes">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.domain.query"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Interacting with users">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.users"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Creating a user account">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.users.creating"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving a user account">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.users.retrieving"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving all users in a domain">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.users.retrievingAll"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Updating a user account">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.users.updating"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Resetting a user's password">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.users.updating.resettingPassword"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Forcing a user to change their password">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.users.updating.forcingPasswordChange"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Suspending a user account">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.users.updating.suspendingAccount"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Granting administrative rights">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.users.updating.grantingAdminRights"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Deleting user accounts">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.users.deleting"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Interacting with nicknames">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.nicknames"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Creating a nickname">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.nicknames.creating"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving a nickname">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.nicknames.retrieving"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving all nicknames for a user">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.nicknames.retrievingUser"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving all nicknames in a domain">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.nicknames.retrievingAll"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Deleting a nickname">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.nicknames.deleting"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Interacting with email lists">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.emailLists"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Creating an email list">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.emailLists.creating"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving all email lists to which a recipient is subscribed">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.emailList.retrieve"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving all email lists in a domain">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.emailLists.retrievingAll"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Deleting an email list">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.emailList.deleting"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Interacting with email list recipients">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.emailListRecipients"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Adding a recipient to an email list">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.emailListRecipients.adding"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving the list of subscribers to an email list">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.emailListRecipients.retrieving"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Removing a recipient from an email list">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.emailListRecipients.removing"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Handling errors">
+<param name="Local" value="./zend.gdata.gapps.html#zend.gdata.gapps.exceptions"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Using Google Base">
+<param name="Local" value="./zend.gdata.gbase.html"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Connect To The Base Service">
+<param name="Local" value="./zend.gdata.gbase.html#zend.gdata.gbase.connect"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Authentication">
+<param name="Local" value="./zend.gdata.gbase.html#zend.gdata.gbase.connect.authentication"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Create A Service Instance">
+<param name="Local" value="./zend.gdata.gbase.html#zend.gdata.gbase.connect.service"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieve Items">
+<param name="Local" value="./zend.gdata.gbase.html#zend.gdata.gbase.retrieve"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Send a Structured Query">
+<param name="Local" value="./zend.gdata.gbase.html#zend.gdata.gbase.retrieve.query"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Query Customer Items Feed">
+<param name="Local" value="./zend.gdata.gbase.html#zend.gdata.gbase.retrieve.query.customeritems"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Query Snippets Feed">
+<param name="Local" value="./zend.gdata.gbase.html#zend.gdata.gbase.retrieve.query.snippets"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Iterate through the Items">
+<param name="Local" value="./zend.gdata.gbase.html#zend.gdata.gbase.retrieve.iterate"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Insert, Update, and Delete Customer Items">
+<param name="Local" value="./zend.gdata.gbase.html#zend.gdata.gbase.crud"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Insert an Item">
+<param name="Local" value="./zend.gdata.gbase.html#zend.gdata.gbase.crud.insert"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Modify an Item">
+<param name="Local" value="./zend.gdata.gbase.html#zend.gdata.gbase.crud.modify"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Delete an Item">
+<param name="Local" value="./zend.gdata.gbase.html#zend.gdata.gbase.crud.delete"></OBJECT></LI>
+</UL></UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Using Picasa Web Albums">
+<param name="Local" value="./zend.gdata.photos.html"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Connecting To The Service">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.connecting"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Authentication">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.connecting.authentication"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Creating A Service Instance">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.connecting.service"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Understanding and Constructing Queries">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.queries"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving Feeds And Entries">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.retrieval"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving A User">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.user_retrieval"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving An Album">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.album_retrieval"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving A Photo">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.photo_retrieval"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving A Comment">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.comment_retrieval"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving A Tag">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.tag_retrieval"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Creating Entries">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.creation"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Creating An Album">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.album_creation"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Creating A Photo">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.photo_creation"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Creating A Comment">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.comment_creation"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Creating A Tag">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.tag_creation"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Deleting Entries">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.deletion"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Deleting An Album">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.album_deletion"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Deleting A Photo">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.photo_deletion"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Deleting A Comment">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.comment_deletion"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Deleting A Tag">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.tag_deletion"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Optimistic Concurrency (Notes On Deletion)">
+<param name="Local" value="./zend.gdata.photos.html#zend.gdata.photos.optimistic_concurrenty"></OBJECT></LI>
+</UL></UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Using the YouTube Data API">
+<param name="Local" value="./zend.gdata.youtube.html"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Authentication">
+<param name="Local" value="./zend.gdata.youtube.html#zend.gdata.youtube.authentication"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Developer Keys and Client ID">
+<param name="Local" value="./zend.gdata.youtube.html#zend.gdata.youtube.developer_key"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving public video feeds">
+<param name="Local" value="./zend.gdata.youtube.html#zend.gdata.youtube.videos"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Searching for videos by metadata">
+<param name="Local" value="./zend.gdata.youtube.html#zend.gdata.youtube.videos.searching"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Searching for videos by categories and tags/keywords">
+<param name="Local" value="./zend.gdata.youtube.html#zend.gdata.youtube.videos.searchingcategories"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving standard feeds">
+<param name="Local" value="./zend.gdata.youtube.html#zend.gdata.youtube.videos.standard"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving videos uploaded by a user">
+<param name="Local" value="./zend.gdata.youtube.html#zend.gdata.youtube.videos.user"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving videos favorited by a user">
+<param name="Local" value="./zend.gdata.youtube.html#zend.gdata.youtube.videos.favorites"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving video responses for a video">
+<param name="Local" value="./zend.gdata.youtube.html#zend.gdata.youtube.videos.responses"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving video comments">
+<param name="Local" value="./zend.gdata.youtube.html#zend.gdata.youtube.comments"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving playlist feeds">
+<param name="Local" value="./zend.gdata.youtube.html#zend.gdata.youtube.playlists"></OBJECT></LI>
+<UL>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving the playlists of a user">
+<param name="Local" value="./zend.gdata.youtube.html#zend.gdata.youtube.playlists.user"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving a specific playlist">
+<param name="Local" value="./zend.gdata.youtube.html#zend.gdata.youtube.playlists.special"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving a list of a user's subscriptions">
+<param name="Local" value="./zend.gdata.youtube.html#zend.gdata.youtube.subscriptions"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Retrieving a user's profile">
+<param name="Local" value="./zend.gdata.youtube.html#zend.gdata.youtube.profile"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Uploading Videos to YouTube">
+<param name="Local" value="./zend.gdata.youtube.html#zend.gdata.youtube.uploads"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Browser-based upload">
+<param name="Local" value="./zend.gdata.youtube.html#zend.gdata.youtube.uploads.browser"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Checking upload status">
+<param name="Local" value="./zend.gdata.youtube.html#zend.gdata.youtube.uploads.status"></OBJECT></LI>
+<LI><OBJECT type="text/sitemap">
+<param name="Name" value="Other Functions">
+<param name="Local" value="./zend.gdata.youtube.html#zend.gdata.youtube.other"></OBJECT></LI>
+</UL><LI><OBJECT type="text/sitemap">
+<param name="Name" value="Catching Gdata Exceptions">
+<param name="Local" value="./zend.gdata.exception.html"></OBJECT></LI>
+</UL></UL>
+</UL>
+</BODY></HTML>

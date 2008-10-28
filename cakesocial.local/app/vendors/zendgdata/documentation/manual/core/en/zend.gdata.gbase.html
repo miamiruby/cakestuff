@@ -1,0 +1,448 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>1.8. Using Google Base</title>
+<link rel="stylesheet" href="dbstyle.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="index.html" title="Programmer's Reference Guide">
+<link rel="up" href="zend.gdata.html" title="Chapter 1. Zend_Gdata">
+<link rel="prev" href="zend.gdata.gapps.html" title="1.7. Using Google Apps Provisioning">
+<link rel="next" href="zend.gdata.photos.html" title="1.9. Using Picasa Web Albums">
+<link rel="chapter" href="zend.gdata.html" title="Chapter 1. Zend_Gdata">
+<link rel="index" href="the.index.html" title="Index">
+<link rel="subsection" href="zend.gdata.gbase.html#zend.gdata.gbase.connect" title="1.8.1. Connect To The Base Service">
+<link rel="subsection" href="zend.gdata.gbase.html#zend.gdata.gbase.retrieve" title="1.8.2. Retrieve Items">
+<link rel="subsection" href="zend.gdata.gbase.html#zend.gdata.gbase.crud" title="1.8.3. Insert, Update, and Delete Customer Items">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader"><table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">1.8. Using Google Base</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="zend.gdata.gapps.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 1. Zend_Gdata</th>
+<td width="20%" align="right"> <a accesskey="n" href="zend.gdata.photos.html">Next</a>
+</td>
+</tr>
+</table></div>
+<div class="sect1" lang="en">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="zend.gdata.gbase"></a>1.8. Using Google Base</h2></div></div></div>
+<p>
+        The Google Base data API is designed to enable developers to do two things:
+        </p>
+<div class="itemizedlist"><ul type="disc">
+<li><p>
+                    Query Google Base data to create applications and mashups.
+                </p></li>
+<li><p>
+                    Input and manage Google Base items programmatically.
+                </p></li>
+</ul></div>
+<p>
+    </p>
+<p>
+        There are two item feeds: snippets feed and customer items feeds. The snippets feed contains all Google Base data and is available to anyone to query against without a need for authentication. The customer items feed is a customer-specific subset of data and only a customer/owner can access this feed to insert, update, or delete their own data. Queries are constructed the same way against both types of feeds.
+    </p>
+<p>
+        See <a href="http://code.google.com/apis/base/" target="_top">http://code.google.com/apis/base</a>
+        for more information about the Google Base API.
+    </p>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.gbase.connect"></a>1.8.1. Connect To The Base Service</h3></div></div></div>
+<p>
+            The Google Base API, like all GData APIs, is based off of the Atom Publishing Protocol (APP), an XML based format for managing web-based resources. Traffic between a client and the Google Base servers occurs over HTTP and allows for both authenticated and unauthenticated connections.
+        </p>
+<p>
+            Before any transactions can occur, this connection needs to be made. Creating a connection to the base servers involves two steps: creating an HTTP client and binding a
+            <code class="code">Zend_Gdata_Gbase</code> service instance to that client.
+        </p>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gbase.connect.authentication"></a>1.8.1.1. Authentication</h4></div></div></div>
+<p>
+                The Google Base API allows access to both public and private base feeds. Public feeds do not require authentication, but are read-only and offer reduced functionality. Private feeds offers the most complete functionality but requires an authenticated connection to the base servers. There are three authentication schemes that are supported by Google Base:
+            </p>
+<div class="itemizedlist"><ul type="disc">
+<li><p>
+                        <em class="firstterm">ClientAuth</em>
+                        provides direct username/password authentication to the base servers. Since this scheme requires that users provide your application with their password, this authentication is only recommended when other authentication schemes are insufficient.
+                    </p></li>
+<li><p>
+                        <em class="firstterm">AuthSub</em>
+                        allows authentication to the base servers via a Google proxy server. This provides the same level of convenience as ClientAuth but without the security risk, making this an ideal choice for web-based applications.
+                    </p></li>
+</ul></div>
+<p>
+                The <code class="code">Zend_Gdata</code>
+                library provides support for all three authentication schemes. The rest of this chapter will assume that you are familiar the authentication schemes available and how to create an appropriate authenticated connection. For more information, please see section <a href="zend.gdata.html#zend.gdata.introduction.authentication" title="1.1.4. Google Data Client Authentication">Section 1.1.4, “Google Data Client Authentication”</a>.
+                or the
+                <a href="http://code.google.com/apis/gdata/auth.html" target="_top">Authentication Overview in the Google Data API Developer's Guide</a>.
+            </p>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gbase.connect.service"></a>1.8.1.2. Create A Service Instance</h4></div></div></div>
+<p>
+                In order to interact with Google Base, this library provides the
+                <code class="code">Zend_Gdata_Gbase</code>
+                service class. This class provides a common interface to the Google Data and Atom Publishing Protocol models and assists in marshaling requests to and from the base servers.
+            </p>
+<p>
+                Once deciding on an authentication scheme, the next step is to create an instance of
+                <code class="code">Zend_Gdata_Gbase</code>
+                . This class takes in an instance of
+                <code class="code">Zend_Http_Client</code>
+                as a single argument. This provides an interface for AuthSub and ClientAuth authentication, as both of these creation of a special authenticated HTTP client. If no arguments are provided, an unauthenticated instance of
+                <code class="code">Zend_Http_Client</code>
+                will be automatically created.
+            </p>
+<p>
+                The example below shows how to create a Base service class using ClientAuth authentication:
+            </p>
+<pre class="programlisting">
+// Parameters for ClientAuth authentication
+$service = Zend_Gdata_Gbase::AUTH_SERVICE_NAME;
+$user = "sample.user@gmail.com";
+$pass = "pa$$w0rd";
+
+// Create an authenticated HTTP client
+$client = Zend_Gdata_ClientLogin::getHttpClient($user, $pass, $service);
+
+// Create an instance of the Base service
+$service = new Zend_Gdata_Gbase($client);
+
+            </pre>
+<p>A Base service using AuthSub can be created in a similar, though slightly more lengthy fashion:</p>
+<pre class="programlisting">
+
+/*
+ * Retrieve the current URL so that the AuthSub server knows where to
+ * redirect the user after authentication is complete.
+ */
+function getCurrentUrl()
+{
+    global $_SERVER;
+
+    // Filter php_self to avoid a security vulnerability.
+    $php_request_uri =
+        htmlentities(substr($_SERVER['REQUEST_URI'],
+                            0,
+                            strcspn($_SERVER['REQUEST_URI'], "\n\r")),
+                     ENT_QUOTES);
+
+    if (isset($_SERVER['HTTPS']) &amp;&amp;
+        strtolower($_SERVER['HTTPS']) == 'on') {
+        $protocol = 'https://';
+    } else {
+        $protocol = 'http://';
+    }
+    $host = $_SERVER['HTTP_HOST'];
+    if ($_SERVER['HTTP_PORT'] != '' &amp;&amp;
+        (($protocol == 'http://' &amp;&amp; $_SERVER['HTTP_PORT'] != '80') ||
+        ($protocol == 'https://' &amp;&amp; $_SERVER['HTTP_PORT'] != '443'))) {
+        $port = ':' . $_SERVER['HTTP_PORT'];
+    } else {
+        $port = '';
+    }
+    return $protocol . $host . $port . $php_request_uri;
+}
+
+/**
+ * Obtain an AuthSub authenticated HTTP client, redirecting the user
+ * to the AuthSub server to login if necessary.
+ */
+function getAuthSubHttpClient()
+{
+    global $_SESSION, $_GET;
+
+    // If there is no AuthSub session or one-time token waiting for us,
+    // redirect the user to the AuthSub server to get one.
+    if (!isset($_SESSION['sessionToken']) &amp;&amp; !isset($_GET['token'])) {
+        // Parameters to give to AuthSub server
+        $next = getCurrentUrl();
+        $scope = "http://www.google.com/base/feeds/items/";
+        $secure = false;
+        $session = true;
+
+        // Redirect the user to the AuthSub server to sign in
+
+        $authSubUrl = Zend_Gdata_AuthSub::getAuthSubTokenUri($next,
+                                                             $scope,
+                                                             $secure,
+                                                             $session);
+         header("HTTP/1.0 307 Temporary redirect");
+
+         header("Location: " . $authSubUrl);
+
+         exit();
+    }
+
+    // Convert an AuthSub one-time token into a session token if needed
+    if (!isset($_SESSION['sessionToken']) &amp;&amp; isset($_GET['token'])) {
+        $_SESSION['sessionToken'] =
+            Zend_Gdata_AuthSub::getAuthSubSessionToken($_GET['token']);
+    }
+
+    // At this point we are authenticated via AuthSub and can obtain an
+    // authenticated HTTP client instance
+
+    // Create an authenticated HTTP client
+    $client = Zend_Gdata_AuthSub::getHttpClient($_SESSION['sessionToken']);
+    return $client;
+}
+
+// -&gt; Script execution begins here &lt;-
+
+// Make sure http://code.google.com/apis/gdata/reference.html#Queriesthat the user has a valid session, so we can record the
+// AuthSub session token once it is available.
+session_start();
+
+// Create an instance of the Base service, redirecting the user
+// to the AuthSub server if necessary.
+$service = new Zend_Gdata_Gbase(getAuthSubHttpClient());
+
+ </pre>
+<p>Finally, an unauthenticated server can be created for use with snippets feeds:</p>
+<pre class="programlisting">
+// Create an instance of the Base service using an unauthenticated HTTP client
+$service = new Zend_Gdata_Gbase();
+
+ </pre>
+</div>
+</div>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.gbase.retrieve"></a>1.8.2. Retrieve Items</h3></div></div></div>
+<p>
+            You can query customer items feed or snippets feed to retrieve items. It involves two steps, sending a query and iterating through the returned feed.
+        </p>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gbase.retrieve.query"></a>1.8.2.1. Send a Structured Query</h4></div></div></div>
+<p>
+                You can send a structured query to retrieve items from your own customer items feed or from the public snippets feed.
+            </p>
+<p>
+                When retrieving items using the Base API, specially constructed query URLs are used to describe what events should be returned. The  <code class="code">Zend_Gdata_Gbase_ItemQuery</code> and <code class="code">Zend_Gdata_Gbase_SnippetQuery</code> classes simplify this task by automatically constructing a query URL based on provided parameters. 
+            </p>
+<div class="sect4" lang="en">
+<div class="titlepage"><div><div><h5 class="title">
+<a name="zend.gdata.gbase.retrieve.query.customeritems"></a>1.8.2.1.1. Query Customer Items Feed</h5></div></div></div>
+<p>
+                    To execute a query against the customer items feed, invoke <code class="code">newItemQuery()</code> and <code class="code">getGbaseItemFeed()</code> methods:
+                </p>
+<pre class="programlisting">
+$service = new Zend_Gdata_Gbase($client);
+$query = $service-&gt;newItemQuery();
+$query-&gt;setBq('[title:Programming]');
+$query-&gt;setOrderBy('modification_time');
+$query-&gt;setSortOrder('descending');
+$query-&gt;setMaxResults('5');
+$feed = $service-&gt;getGbaseItemFeed($query);
+
+                </pre>
+<p>
+                    A full list of these parameters is available at the <a href="http://code.google.com/apis/base/items-feed.html#QueParameters" target="_top">Query parameters section</a> of the Customer Items Feed documentation.
+                </p>
+</div>
+<div class="sect4" lang="en">
+<div class="titlepage"><div><div><h5 class="title">
+<a name="zend.gdata.gbase.retrieve.query.snippets"></a>1.8.2.1.2. Query Snippets Feed</h5></div></div></div>
+<p>
+                    To execute a query against the public snippets feed, invoke <code class="code">newSnippetQuery()</code> and <code class="code">getGbaseSnippetFeed()</code> methods:
+                </p>
+<pre class="programlisting">
+$service = new Zend_Gdata_Gbase();
+$query = $service-&gt;newSnippetQuery();
+$query-&gt;setBq('[title:Programming]');
+$query-&gt;setOrderBy('modification_time');
+$query-&gt;setSortOrder('descending');
+$query-&gt;setMaxResults('5');
+$feed = $service-&gt;getGbaseSnippetFeed($query);
+
+                </pre>
+<p>
+                    A full list of these parameters is available at the <a href="http://code.google.com/apis/base/snippets-feed.html#Parameters" target="_top">Query parameters section</a> of the Snippets Feed documentation.
+                </p>
+</div>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gbase.retrieve.iterate"></a>1.8.2.2. Iterate through the Items</h4></div></div></div>
+<p>
+                Google Base items can contain item-specific attributes such as <code class="code">&lt;g:main_ingredient&gt;</code> and <code class="code">&lt;g:weight&gt;</code>.
+            </p>
+<p>
+                To iterate through all attributes of a given item, invoke <code class="code">getGbaseAttributes()</code> and iterate through the results:
+            </p>
+<pre class="programlisting">
+foreach ($feed-&gt;entries as $entry) {
+  // Get all attributes and print out the name and text value of each 
+  // attribute
+  $baseAttributes = $entry-&gt;getGbaseAttributes();
+  foreach ($baseAttributes as $attr) {
+    echo "Attribute " . $attr-&gt;name . " : " . $attr-&gt;text . "&lt;br&gt;";
+  }
+}
+
+            </pre>
+<p>
+                Or, you can look for specific attribute name and iterate through the results that match:
+            </p>
+<pre class="programlisting">
+foreach ($feed-&gt;entries as $entry) {
+  // Print all main ingredients &lt;g:main_ingredient&gt;
+  $baseAttributes = $entry-&gt;getGbaseAttribute("main_ingredient");
+  foreach ($baseAttributes as $attr) {
+    echo "Main ingredient: " . $attr-&gt;text . "&lt;br&gt;";
+  }
+}
+
+            </pre>
+</div>
+</div>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.gbase.crud"></a>1.8.3. Insert, Update, and Delete Customer Items</h3></div></div></div>
+<p>
+            A customer/owner can access his own Customer Items feed to insert, update, or delete their items. These operations do not apply to the public snippets feed.
+        </p>
+<p>
+            You can test a feed operation before it is actually executed by setting the dry-run flag (<code class="code">$dryRun</code>) to <code class="code">true</code>. Once you are sure that you want to submit the data, set it to <code class="code">false</code> to execute the operation.
+        </p>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gbase.crud.insert"></a>1.8.3.1. Insert an Item</h4></div></div></div>
+<p>
+                Items can be added by using the <code class="code">insertGbaseItem()</code> method for the Base service:
+            </p>
+<pre class="programlisting">
+$service = new Zend_Gdata_Gbase($client);
+$newEntry = $service-&gt;newItemEntry();
+
+// Add title
+$title = "PHP Developer Handbook";
+$newEntry-&gt;title = $service-&gt;newTitle(trim($title));
+
+// Add some content
+$content = "Essential handbook for PHP developers.";
+$newEntry-&gt;content = $service-&gt;newContent($content);
+$newEntry-&gt;content-&gt;type = 'text';
+
+// Define product type
+$itemType = "Products";
+$newEntry-&gt;itemType = $itemType;
+
+// Add item specific attributes
+$newEntry-&gt;addGbaseAttribute("product_type", "book", "text");
+$newEntry-&gt;addGbaseAttribute("price", "12.99 USD", "floatUnit");
+$newEntry-&gt;addGbaseAttribute("quantity", "10", "int");
+$newEntry-&gt;addGbaseAttribute("weight", "2.2 lbs", "numberUnit");
+$newEntry-&gt;addGbaseAttribute("condition", "New", "text");
+$newEntry-&gt;addGbaseAttribute("author", "John Doe", "text");
+$newEntry-&gt;addGbaseAttribute("edition", "First Edition", "text");
+$newEntry-&gt;addGbaseAttribute("pages", "253", "number");
+$newEntry-&gt;addGbaseAttribute("publisher", "My Press", "text");
+$newEntry-&gt;addGbaseAttribute("year", "2007", "number");
+$newEntry-&gt;addGbaseAttribute("payment_accepted", "Google Checkout", "text");
+
+$dryRun = true;
+$createdEntry = $service-&gt;insertGbaseItem($newEntry, $dryRun);
+
+            </pre>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gbase.crud.modify"></a>1.8.3.2. Modify an Item</h4></div></div></div>
+<p>
+                You can update each attribute element of an item as you iterate through them:
+            </p>
+<pre class="programlisting">
+// Update the title
+$newTitle = "PHP Developer Handbook Second Edition";
+$entry-&gt;title = $service-&gt;newTitle($newTitle);
+
+// Find &lt;g:price&gt; attribute and update the price
+$baseAttributes = $entry-&gt;getGbaseAttribute("price");
+if (is_object($baseAttributes[0])) {
+  $newPrice = "16.99 USD";
+  $baseAttributes[0]-&gt;text = $newPrice;
+}
+
+// Find &lt;g:pages&gt; attribute and update the number of pages
+$baseAttributes = $entry-&gt;getGbaseAttribute("pages");
+if (is_object($baseAttributes[0])) {
+  $newPages = "278";
+  $baseAttributes[0]-&gt;text = $newPages;
+
+  // Update the attribute type from "number" to "int"
+  if ($baseAttributes[0]-&gt;type == "number") {
+    $newType = "int";
+    $baseAttributes[0]-&gt;type = $newType;
+  }
+}
+
+// Remove &lt;g:label&gt; attributes
+$baseAttributes = $entry-&gt;getGbaseAttribute("label");
+foreach ($baseAttributes as $note) {
+  $entry-&gt;removeGbaseAttribute($note);
+}
+
+// Add new attributes
+$entry-&gt;addGbaseAttribute("note", "PHP 5", "text");
+$entry-&gt;addGbaseAttribute("note", "Web Programming", "text");
+
+// Save the changes by invoking save() on the entry object itself
+$dryRun = true;
+$entry-&gt;save($dryRun);
+
+// Or, save the changes by calling updateGbaseItem() on the service object
+// $dryRun = true;
+// $service-&gt;updateGbaseItem($entry, $dryRun);
+
+            </pre>
+<p>
+                After making the changes, either invoke <code class="code">save($dryRun)</code> method on the <code class="code">Zend_Gdata_Gbase_ItemEntry</code> object or call <code class="code">updateGbaseItem($entry, $dryRun)</code> method on the <code class="code">Zend_Gdata_Gbase</code> object to save the changes.
+            </p>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gbase.crud.delete"></a>1.8.3.3. Delete an Item</h4></div></div></div>
+<p>
+                You can remove an item by calling <code class="code">deleteGbaseItem()</code> method:
+            </p>
+<pre class="programlisting">
+$dryRun = false;
+$service-&gt;deleteGbaseItem($entry, $dryRun);
+
+            </pre>
+<p>
+                Alternatively, you can invoke <code class="code">delete()</code> on the <code class="code">Zend_Gdata_Gbase_ItemEntry</code> object:
+            </p>
+<pre class="programlisting">
+$dryRun = false;
+$entry-&gt;delete($dryRun);
+
+            </pre>
+</div>
+</div>
+</div>
+<div class="navfooter"><table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="zend.gdata.gapps.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="zend.gdata.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="zend.gdata.photos.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">1.7. Using Google Apps Provisioning </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> 1.9. Using Picasa Web Albums</td>
+</tr>
+</table></div>
+<div class="revinfo"></div>
+</body>
+</html>

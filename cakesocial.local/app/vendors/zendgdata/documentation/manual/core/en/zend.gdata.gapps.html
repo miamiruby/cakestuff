@@ -1,0 +1,803 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>1.7. Using Google Apps Provisioning</title>
+<link rel="stylesheet" href="dbstyle.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="index.html" title="Programmer's Reference Guide">
+<link rel="up" href="zend.gdata.html" title="Chapter 1. Zend_Gdata">
+<link rel="prev" href="zend.gdata.spreadsheets.html" title="1.6. Using Google Spreadsheets">
+<link rel="next" href="zend.gdata.gbase.html" title="1.8. Using Google Base">
+<link rel="chapter" href="zend.gdata.html" title="Chapter 1. Zend_Gdata">
+<link rel="index" href="the.index.html" title="Index">
+<link rel="subsection" href="zend.gdata.gapps.html#zend.gdata.gapps.domain" title="1.7.1. Setting the current domain">
+<link rel="subsection" href="zend.gdata.gapps.html#zend.gdata.gapps.users" title="1.7.2. Interacting with users">
+<link rel="subsection" href="zend.gdata.gapps.html#zend.gdata.gapps.nicknames" title="1.7.3. Interacting with nicknames">
+<link rel="subsection" href="zend.gdata.gapps.html#zend.gdata.gapps.emailLists" title="1.7.4. Interacting with email lists">
+<link rel="subsection" href="zend.gdata.gapps.html#zend.gdata.gapps.emailListRecipients" title="1.7.5. Interacting with email list recipients">
+<link rel="subsection" href="zend.gdata.gapps.html#zend.gdata.gapps.exceptions" title="1.7.6. Handling errors">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader"><table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">1.7. Using Google Apps Provisioning</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="zend.gdata.spreadsheets.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 1. Zend_Gdata</th>
+<td width="20%" align="right"> <a accesskey="n" href="zend.gdata.gbase.html">Next</a>
+</td>
+</tr>
+</table></div>
+<div class="sect1" lang="en">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="zend.gdata.gapps"></a>1.7. Using Google Apps Provisioning</h2></div></div></div>
+<p>
+        Google Apps is a service which allows domain administrators to offer
+        their users managed access to Google services such as Mail, Calendar,
+        and Docs &amp; Spreadsheets. The Provisioning API offers a programmatic
+        interface to configure this service. Specifically, this API allows
+        administrators the ability to create, retrieve, update, and delete
+        user accounts, nicknames, and email lists.
+    </p>
+<p>
+        This library implements version 2.0 of the Provisioning API. Access to
+        your account via the Provisioning API must be manually enabled for
+        each domain using the Google Apps control panel. Only certain
+        account types are able to enable this feature.
+    </p>
+<p>
+        For more information on the Google Apps Provisioning API, including
+        instructions for enabling API access, refer to the <a href="http://code.google.com/apis/calendar/overview.html" target="_top">Provisioning
+        API V2.0 Reference</a>.
+    </p>
+<div class="note"><table border="0" summary="Note: Authentication">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td>
+<th align="left">Authentication</th>
+</tr>
+<tr><td align="left" valign="top"><p>
+            The Provisioning API does not support authentication via AuthSub
+            and anonymous access is not permitted. All HTTP connections must
+            be authenticated using ClientAuth authentication.
+            </p></td></tr>
+</table></div>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.gapps.domain"></a>1.7.1. Setting the current domain</h3></div></div></div>
+<p>
+            In order to use the Provisioning API, the domain being
+            administered needs to be specified in all request URIs. In order
+            to ease development, this information is stored within both the
+            Gapps service and query classes to use when constructing
+            requests.
+        </p>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gapps.domain.service"></a>1.7.1.1. Setting the domain for the service class</h4></div></div></div>
+<p>
+                To set the domain for requests made by the service class,
+                either call <code class="code">setDomain()</code> or specify the domain
+                when instantiating the service class. For example:
+            </p>
+<pre class="programlisting">
+$domain = "example.com";
+$gdata = new Zend_Gdata_Gapps($client, $domain);
+
+            </pre>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gapps.domain.query"></a>1.7.1.2. Setting the domain for query classes</h4></div></div></div>
+<p>
+                Setting the domain for requests made by query classes is
+                similar to setting it for the service class-either call
+                <code class="code">setDomain()</code> or specify the domain when creating
+                the query. For example:
+            </p>
+<pre class="programlisting">
+$domain = "example.com";
+$query = new Zend_Gdata_Gapps_UserQuery($domain, $arg);
+
+            </pre>
+<p>
+                When using a service class factory method to create a query,
+                the service class will automatically set the query's domain to
+                match its own domain. As a result, it is not necessary to
+                specify the domain as part of the constructor arguments.
+            </p>
+<pre class="programlisting">
+$domain = "example.com";
+$gdata = new Zend_Gdata_Gapps($client, $domain);
+$query = $gdata-&gt;newUserQuery($arg);
+
+            </pre>
+</div>
+</div>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.gapps.users"></a>1.7.2. Interacting with users</h3></div></div></div>
+<p>
+            Each user account on a Google Apps hosted domain is represented as
+            an instance of Zend_Gdata_Gapps_UserEntry. This class provides
+            access to all account properties including name, username,
+            password, access rights, and current quota.
+        </p>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gapps.users.creating"></a>1.7.2.1. Creating a user account</h4></div></div></div>
+<p>
+                User accounts can be created by calling the
+                <code class="code">createUser()</code> convenience method:
+            </p>
+<pre class="programlisting">
+$gdata-&gt;createUser('foo', 'Random', 'User', '••••••••');
+
+            </pre>
+<p>
+                Users can also be created by instantiating UserEntry,
+                providing a username, given name, family name, and password,
+                then calling <code class="code">insertUser()</code> on a service object to
+                upload the entry to the server.
+            </p>
+<pre class="programlisting">
+$user = $gdata-&gt;newUserEntry();
+$user-&gt;login = $gdata-&gt;newLogin();
+$user-&gt;login-&gt;username = 'foo';
+$user-&gt;login-&gt;password = '••••••••';
+$user-&gt;name = $gdata-&gt;newName();
+$user-&gt;name-&gt;givenName = 'Random';
+$user-&gt;name-&gt;familyName = 'User';
+$user = $gdata-&gt;insertUser($user);
+
+            </pre>
+<p>
+                The user's password should normally be provided as cleartext.
+                Optionally, the password can be provided as an SHA-1 digest if
+                <code class="code">login-&gt;passwordHashFunction</code> is set to 'SHA-1'.
+            </p>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gapps.users.retrieving"></a>1.7.2.2. Retrieving a user account</h4></div></div></div>
+<p>
+                Individual user accounts can be retrieved by calling the
+                <code class="code">retrieveUser()</code> convenience method. If the user is
+                not found, <code class="code">null</code> will be returned.
+            </p>
+<pre class="programlisting">
+$user = $gdata-&gt;retrieveUser('foo');
+
+echo 'Username: ' . $user-&gt;login-&gt;userName . "\n";
+echo 'Given Name: ' . $user-&gt;login-&gt;givenName . "\n";
+echo 'Family Name: ' . $user-&gt;login-&gt;familyName . "\n";
+echo 'Suspended: ' . ($user-&gt;login-&gt;suspended ? 'Yes' : 'No') . "\n";
+echo 'Admin: ' . ($user-&gt;login-&gt;admin ? 'Yes' : 'No') . "\n"
+echo 'Must Change Password: ' .
+     ($user-&gt;login-&gt;changePasswordAtNextLogin ? 'Yes' : 'No') . "\n";
+echo 'Has Agreed To Terms: ' .
+     ($user-&gt;login-&gt;agreedToTerms ? 'Yes' : 'No') . "\n";
+
+            </pre>
+<p>
+                Users can also be retrieved by creating an
+                instance of Zend_Gdata_Gapps_UserQuery, setting its username
+                property to equal the username of the user that is to be
+                retrieved, and calling <code class="code">getUserEntry()</code> on a
+                service object with that query.
+            </p>
+<pre class="programlisting">
+$query = $gdata-&gt;newUserQuery('foo');
+$user = $gdata-&gt;getUserEntry($query);
+
+echo 'Username: ' . $user-&gt;login-&gt;userName . "\n";
+echo 'Given Name: ' . $user-&gt;login-&gt;givenName . "\n";
+echo 'Family Name: ' . $user-&gt;login-&gt;familyName . "\n";
+echo 'Suspended: ' . ($user-&gt;login-&gt;suspended ? 'Yes' : 'No') . "\n";
+echo 'Admin: ' . ($user-&gt;login-&gt;admin ? 'Yes' : 'No') . "\n"
+echo 'Must Change Password: ' .
+     ($user-&gt;login-&gt;changePasswordAtNextLogin ? 'Yes' : 'No') . "\n";
+echo 'Has Agreed To Terms: ' .
+     ($user-&gt;login-&gt;agreedToTerms ? 'Yes' : 'No') . "\n";
+
+            </pre>
+<p>
+                If the specified user cannot be located a ServiceException
+                will be thrown with an error code of
+                Zend_Gdata_Gapps_Error::ENTITY_DOES_NOT_EXIST.
+                ServiceExceptions will be covered in <a href="zend.gdata.gapps.html#zend.gdata.gapps.exceptions" title="1.7.6. Handling errors">Section 1.7.6, “Handling errors”</a>.
+            </p>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gapps.users.retrievingAll"></a>1.7.2.3. Retrieving all users in a domain</h4></div></div></div>
+<p>
+                To retrieve all users in a domain, call the
+                <code class="code">retrieveAllUsers()</code> convenience method.
+            </p>
+<pre class="programlisting">
+$feed = $gdata-&gt;retrieveAllUsers();
+
+foreach ($feed as $user) {
+    echo "  * " . $user-&gt;login-&gt;username . ' (' . $user-&gt;name-&gt;givenName .
+        ' ' . $user-&gt;name-&gt;familyName . ")\n";
+}
+
+            </pre>
+<p>
+                This will create a Zend_Gdata_Gapps_UserFeed object which
+                holds each user on the domain. 
+            </p>
+<p>
+                Alternatively, call <code class="code">getUserFeed()</code> with no 
+                options. Keep in mind that on larger
+                domains this feed may be paged by the server. For more
+                information on paging, see <a href="zend.gdata.html#zend.gdata.introduction.paging" title="1.1.9. Working with multi-page feeds">Section 1.1.9, “Working with multi-page feeds”</a>.
+            </p>
+<pre class="programlisting">
+$feed = $gdata-&gt;getUserFeed();
+
+foreach ($feed as $user) {
+    echo "  * " . $user-&gt;login-&gt;username . ' (' . $user-&gt;name-&gt;givenName .
+        ' ' . $user-&gt;name-&gt;familyName . ")\n";
+}
+
+            </pre>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gapps.users.updating"></a>1.7.2.4. Updating a user account</h4></div></div></div>
+<p>
+                The easiest way to update a user account is to retrieve the
+                user as described in the previous sections, make any desired
+                changes, then call <code class="code">save()</code> on that user. Any
+                changes made will be propagated to the server.
+            </p>
+<pre class="programlisting">
+$user = $gdata-&gt;retrieveUser('foo');
+$user-&gt;name-&gt;givenName = 'Foo';
+$user-&gt;name-&gt;familyName = 'Bar';
+$user = $user-&gt;save();
+
+            </pre>
+<div class="sect4" lang="en">
+<div class="titlepage"><div><div><h5 class="title">
+<a name="zend.gdata.gapps.users.updating.resettingPassword"></a>1.7.2.4.1. Resetting a user's password</h5></div></div></div>
+<p>
+                    A user's password can be reset to a new value by updating
+                    the <code class="code">login-&gt;password</code> property.
+                </p>
+<pre class="programlisting">
+$user = $gdata-&gt;retrieveUser('foo');
+$user-&gt;login-&gt;password = '••••••••';
+$user = $user-&gt;save();
+
+                </pre>
+<p>
+                    Note that it is not possible to recover a password in this
+                    manner as stored passwords are not made available via the
+                    Provisioning API for security reasons.
+                </p>
+</div>
+<div class="sect4" lang="en">
+<div class="titlepage"><div><div><h5 class="title">
+<a name="zend.gdata.gapps.users.updating.forcingPasswordChange"></a>1.7.2.4.2. Forcing a user to change their password</h5></div></div></div>
+<p>
+                    A user can be forced to change their password at their
+                    next login by setting the
+                    <code class="code">login-&gt;changePasswordAtNextLogin</code> property to
+                    <code class="code">true</code>.
+                </p>
+<pre class="programlisting">
+$user = $gdata-&gt;retrieveUser('foo');
+$user-&gt;login-&gt;changePasswordAtNextLogin = true;
+$user = $user-&gt;save();
+
+                </pre>
+<p>
+                    Similarly, this can be undone by setting the
+                    <code class="code">login-&gt;changePasswordAtNextLogin</code> property to
+                    <code class="code">false</code>.
+                </p>
+</div>
+<div class="sect4" lang="en">
+<div class="titlepage"><div><div><h5 class="title">
+<a name="zend.gdata.gapps.users.updating.suspendingAccount"></a>1.7.2.4.3. Suspending a user account</h5></div></div></div>
+<p>
+                    Users can be restricted from logging in without deleting
+                    their user account by instead
+                    <span class="emphasis"><em>suspending</em></span> their user account.
+                    Accounts can be suspended or restored by using the
+                    <code class="code">suspendUser()</code> and <code class="code">restoreUser()</code>
+                    convenience methods:
+                </p>
+<pre class="programlisting">
+$gdata-&gt;suspendUser('foo');
+$gdata-&gt;restoreUser('foo');
+
+                </pre>
+<p>
+                    Alternatively, you can set the UserEntry's
+                    <code class="code">login-&gt;suspended</code> property to
+                    <code class="code">true</code>.
+                </p>
+<pre class="programlisting">
+$user = $gdata-&gt;retrieveUser('foo');
+$user-&gt;login-&gt;suspended = true;
+$user = $user-&gt;save();
+
+                </pre>
+<p>
+                    To restore the user's access, set the
+                    <code class="code">login-&gt;suspended</code> property to
+                    <code class="code">false</code>.
+                </p>
+</div>
+<div class="sect4" lang="en">
+<div class="titlepage"><div><div><h5 class="title">
+<a name="zend.gdata.gapps.users.updating.grantingAdminRights"></a>1.7.2.4.4. Granting administrative rights</h5></div></div></div>
+<p>
+                    Users can be granted the ability to administer your domain
+                    by setting their <code class="code">login-&gt;admin</code> property to
+                    <code class="code">true</code>.
+                </p>
+<pre class="programlisting">
+$user = $gdata-&gt;retrieveUser('foo');
+$user-&gt;login-&gt;admin = true;
+$user = $user-&gt;save();
+
+                </pre>
+<p>
+                    And as expected, setting a user's <code class="code">login-&gt;admin</code>
+                    property to <code class="code">false</code> revokes their
+                    administrative rights.
+                </p>
+</div>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gapps.users.deleting"></a>1.7.2.5. Deleting user accounts</h4></div></div></div>
+<p>
+                Deleting a user account to which you already hold a UserEntry
+                is a simple as calling <code class="code">delete()</code> on that
+                entry.
+            </p>
+<pre class="programlisting">
+$user = $gdata-&gt;retrieveUser('foo');
+$user-&gt;delete();
+
+            </pre>
+<p>
+                If you do not have access to a UserEntry object for an
+                account, use the <code class="code">deleteUser()</code> convenience method.
+            </p>
+<pre class="programlisting">
+$gdata-&gt;deleteUser('foo');
+
+            </pre>
+</div>
+</div>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.gapps.nicknames"></a>1.7.3. Interacting with nicknames</h3></div></div></div>
+<p>
+            Nicknames serve as email aliases for existing users. Each nickname
+            contains precisely two key properties: its name and its owner. Any
+            email addressed to a nickname is forwarded to the user who owns
+            that nickname.
+        </p>
+<p>
+            Nicknames are represented as an instances of
+            Zend_Gdata_Gapps_NicknameEntry.
+        </p>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gapps.nicknames.creating"></a>1.7.3.1. Creating a nickname</h4></div></div></div>
+<p>
+                Nicknames can be created by calling the
+                <code class="code">createNickname()</code> convenience method:
+            </p>
+<pre class="programlisting">
+$gdata-&gt;createNickname('foo', 'bar');
+
+            </pre>
+<p>
+                Nicknames can also be created by instantiating NicknameEntry,
+                providing the nickname with a name and an owner, then calling
+                <code class="code">insertNickname()</code> on a service object to upload
+                the entry to the server.
+            </p>
+<pre class="programlisting">
+$nickname = $gdata-&gt;newNicknameEntry();
+$nickname-&gt;login = $gdata-&gt;newLogin('foo');
+$nickname-&gt;nickname = $gdata-&gt;newNickname('bar');
+$nickname = $gdata-&gt;insertNickname($nickname);
+
+            </pre>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gapps.nicknames.retrieving"></a>1.7.3.2. Retrieving a nickname</h4></div></div></div>
+<p>
+                Nicknames can be retrieved by calling the
+                <code class="code">retrieveNickname()</code> convenience method. This will
+                return <code class="code">null</code> if a user is not found.
+            </p>
+<pre class="programlisting">
+$nickname = $gdata-&gt;retrieveNickname('bar');
+
+echo 'Nickname: ' . $nickname-&gt;nickname-&gt;name . "\n";
+echo 'Owner: ' . $nickname-&gt;login-&gt;username . "\n";
+
+            </pre>
+<p>
+                Individual nicknames can also be retrieved by creating an
+                instance of Zend_Gdata_Gapps_NicknameQuery, setting its
+                nickname property to equal the nickname that is to be
+                retrieved, and calling <code class="code">getNicknameEntry()</code> on a
+                service object with that query.
+            </p>
+<pre class="programlisting">
+$query = $gdata-&gt;newNicknameQuery('bar');
+$nickname = $gdata-&gt;getNicknameEntry($query);
+
+echo 'Nickname: ' . $nickname-&gt;nickname-&gt;name . "\n";
+echo 'Owner: ' . $nickname-&gt;login-&gt;username . "\n";
+
+            </pre>
+<p>
+                As with users, if no corresponding nickname is found a
+                ServiceException will be thrown with an error code of
+                Zend_Gdata_Gapps_Error::ENTITY_DOES_NOT_EXIST. Again, these
+                will be discussed in <a href="zend.gdata.gapps.html#zend.gdata.gapps.exceptions" title="1.7.6. Handling errors">Section 1.7.6, “Handling errors”</a>.
+            </p>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gapps.nicknames.retrievingUser"></a>1.7.3.3. Retrieving all nicknames for a user</h4></div></div></div>
+<p>
+                To retrieve all nicknames associated with a given user, call
+                the convenience method <code class="code">retrieveNicknames()</code>.
+            </p>
+<pre class="programlisting">
+$feed = $gdata-&gt;retrieveNicknames('foo');
+
+foreach ($feed as $nickname) {
+    echo '  * ' . $nickname-&gt;nickname-&gt;name . "\n";
+}
+
+            </pre>
+<p>
+                This will create a Zend_Gdata_Gapps_NicknameFeed object which
+                holds each nickname associated with the specified user.
+            </p>
+<p>
+                Alternatively, create a new Zend_Gdata_Gapps_NicknameQuery,
+                set its username property to the desired user, and submit the
+                query by calling <code class="code">getNicknameFeed()</code> on a service
+                object.
+            </p>
+<pre class="programlisting">
+$query = $gdata-&gt;newNicknameQuery();
+$query-&gt;setUsername('foo');
+$feed = $gdata-&gt;getNicknameFeed($query);
+
+foreach ($feed as $nickname) {
+    echo '  * ' . $nickname-&gt;nickname-&gt;name . "\n";
+}
+
+            </pre>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gapps.nicknames.retrievingAll"></a>1.7.3.4. Retrieving all nicknames in a domain</h4></div></div></div>
+<p>
+                To retrieve all nicknames in a feed, simply call the
+                convenience method <code class="code">retrieveAllNicknames()</code>
+            </p>
+<pre class="programlisting">
+$feed = $gdata-&gt;retrieveAllNicknames();
+
+foreach ($feed as $nickname) {
+    echo '  * ' . $nickname-&gt;nickname-&gt;name . ' =&gt; ' . 
+        $nickname-&gt;login-&gt;username . "\n";
+}
+
+            </pre>
+<p>
+                This will create a Zend_Gdata_Gapps_NicknameFeed object which
+                holds each nickname on the domain.
+            </p>
+<p>
+                Alternatively, call <code class="code">getNicknameFeed()</code> on a 
+                service object with no arguments.
+            </p>
+<pre class="programlisting">
+$feed = $gdata-&gt;getNicknameFeed();
+
+foreach ($feed as $nickname) {
+    echo '  * ' . $nickname-&gt;nickname-&gt;name . ' =&gt; ' . 
+        $nickname-&gt;login-&gt;username . "\n";
+}
+
+            </pre>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gapps.nicknames.deleting"></a>1.7.3.5. Deleting a nickname</h4></div></div></div>
+<p>
+                Deleting a nickname to which you already hold a NicknameEntry
+                for is a simple as calling <code class="code">delete()</code> on that
+                entry.
+            </p>
+<pre class="programlisting">
+$nickname = $gdata-&gt;retrieveNickname('bar');
+$nickname-&gt;delete();
+
+            </pre>
+<p>
+                For nicknames which you do not hold a NicknameEntry for, use
+                the <code class="code">deleteNickname()</code> convenience method.
+            </p>
+<pre class="programlisting">
+$gdata-&gt;deleteNickname('bar');
+
+            </pre>
+</div>
+</div>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.gapps.emailLists"></a>1.7.4. Interacting with email lists</h3></div></div></div>
+<p>
+            Email lists allow several users to retrieve email addressed to a
+            single email address. Users do not need to be a
+            member of this domain in order to subscribe to an email list
+            provided their complete email address (including domain) is used.
+        </p>
+<p>
+            Each email list on a domain is represented as an instance of
+            Zend_Gdata_Gapps_EmailListEntry.
+        </p>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gapps.emailLists.creating"></a>1.7.4.1. Creating an email list</h4></div></div></div>
+<p>
+                Email lists can be created by calling the
+                <code class="code">createEmailList()</code> convenience method:
+            </p>
+<pre class="programlisting">
+$gdata-&gt;createEmailList('friends');
+
+            </pre>
+<p>
+                Email lists can also be created by instantiating
+                EmailListEntry, providing a name for the list, then calling
+                <code class="code">insertEmailList()</code> on a service object to upload
+                the entry to the server.
+            </p>
+<pre class="programlisting">
+$list = $gdata-&gt;newEmailListEntry();
+$list-&gt;emailList = $gdata-&gt;newEmailList('friends');
+$list = $gdata-&gt;insertEmailList($list);
+
+            </pre>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gapps.emailList.retrieve"></a>1.7.4.2. Retrieving all email lists to which a recipient is
+            subscribed</h4></div></div></div>
+<p>
+                To retrieve all email lists to which a particular recipient is
+                subscribed, call the <code class="code">retrieveEmailLists()</code>
+                convenience method:
+            </p>
+<pre class="programlisting">
+$feed = $gdata-&gt;retrieveEmailLists('baz@somewhere.com');
+
+foreach ($feed as $list) {
+    echo '  * ' . $list-&gt;emailList-&gt;name . "\n";
+}
+
+            </pre>
+<p>
+                This will create a Zend_Gdata_Gapps_EmailListFeed object which
+                holds each email list associated with the specified recipient.
+            </p>
+<p>
+                Alternatively, create a new Zend_Gdata_Gapps_EmailListQuery,
+                set its recipient property to the desired email address, and
+                submit the query by calling <code class="code">getEmailListFeed()</code> on
+                a service object.
+            </p>
+<pre class="programlisting">
+$query = $gdata-&gt;newEmailListQuery();
+$query-&gt;setRecipient('baz@somewhere.com');
+$feed = $gdata-&gt;getEmailListFeed($query);
+
+foreach ($feed as $list) {
+    echo '  * ' . $list-&gt;emailList-&gt;name . "\n";
+}
+
+            </pre>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gapps.emailLists.retrievingAll"></a>1.7.4.3. Retrieving all email lists in a domain</h4></div></div></div>
+<p>
+                To retrieve all email lists in a domain, call the convenience
+                method <code class="code">retrieveAllEmailLists()</code>.
+            </p>
+<pre class="programlisting">
+$feed = $gdata-&gt;retrieveAllEmailLists();
+
+foreach ($feed as $list) {
+    echo '  * ' . $list-&gt;emailList-&gt;name . "\n";
+}
+
+            </pre>
+<p>
+                This will create a Zend_Gdata_Gapps_EmailListFeed object which
+                holds each email list on the domain.
+            </p>
+<p>
+                Alternatively, call <code class="code">getEmailListFeed()</code> on a
+                service object with no arguments.
+            </p>
+<pre class="programlisting">
+$feed = $gdata-&gt;getEmailListFeed();
+
+foreach ($feed as $list) {
+    echo '  * ' . $list-&gt;emailList-&gt;name . "\n";
+}
+
+            </pre>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gapps.emailList.deleting"></a>1.7.4.4. Deleting an email list</h4></div></div></div>
+<p>
+                To delete an email list, call the deleteEmailList()
+                convenience method:
+            </p>
+<pre class="programlisting">
+$gdata-&gt;deleteEmailList('friends');
+
+            </pre>
+</div>
+</div>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.gapps.emailListRecipients"></a>1.7.5. Interacting with email list recipients</h3></div></div></div>
+<p>
+            Each recipient subscribed to an email list is represented by an
+            instance of Zend_Gdata_Gapps_EmailListRecipient. Through this
+            class, individual recipients can be added and removed from email
+            lists.
+        </p>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gapps.emailListRecipients.adding"></a>1.7.5.1. Adding a recipient to an email list</h4></div></div></div>
+<p>
+                To add a recipient to an email list, simply call the
+                <code class="code">addRecipientToEmailList()</code> convenience method:
+            </p>
+<pre class="programlisting">
+$gdata-&gt;addRecipientToEmailList('bar@somewhere.com', 'friends');
+
+            </pre>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gapps.emailListRecipients.retrieving"></a>1.7.5.2. Retrieving the list of subscribers to an email list</h4></div></div></div>
+<p>
+                The convenience method <code class="code">retrieveAllRecipients()</code>
+                can be used to retrieve the list of subscribers to an email list:
+            </p>
+<pre class="programlisting">
+$feed = $gdata-&gt;retrieveAllRecipients('friends');
+
+foreach ($feed as $recipient) {
+    echo '  * ' . $recipient-&gt;who-&gt;email . "\n";
+}
+
+            </pre>
+<p>
+                Alternatively, construct a new EmailListRecipientQuery, set
+                its emailListName property to match the desired email list,
+                and call <code class="code">getEmailListRecipientFeed()</code> on a service
+                object.
+            </p>
+<pre class="programlisting">
+$query = $gdata-&gt;newEmailListRecipientQuery();
+$query-&gt;setEmailListName('friends');
+$feed = $gdata-&gt;getEmailListRecipientFeed($query);
+
+foreach ($feed as $recipient) {
+    echo '  * ' . $recipient-&gt;who-&gt;email . "\n";
+}
+
+            </pre>
+<p>
+                This will create a Zend_Gdata_Gapps_EmailListRecipientFeed
+                object which holds each recipient for the selected email list.
+            </p>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.gapps.emailListRecipients.removing"></a>1.7.5.3. Removing a recipient from an email list</h4></div></div></div>
+<p>
+                To remove a recipient from an email list, call the
+                <code class="code">removeRecipientFromEmailList()</code> convenience
+                method:
+            </p>
+<pre class="programlisting">
+$gdata-&gt;removeRecipientFromEmailList('baz@somewhere.com', 'friends');
+
+            </pre>
+</div>
+</div>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.gapps.exceptions"></a>1.7.6. Handling errors</h3></div></div></div>
+<p>
+            In addition to the standard suite of exceptions thrown by
+            Zend_Gdata, requests using the Provisioning API may also throw a
+            <code class="code">Zend_Gdata_Gapps_ServiceException</code>. These exceptions
+            indicate that a API specific error occurred which prevents the
+            request from completing.
+        </p>
+<p>
+            Each ServiceException instance may hold one or more Error objects.
+            Each of these objects contains an error code, reason, and
+            (optionally) the input which triggered the exception. A complete
+            list of known error codes is provided in the Zend Framework API
+            documentation under Zend_Gdata_Gapps_Error. Additionally, the
+            authoritative error list is available online at <a href="http://code.google.com/apis/apps/gdata_provisioning_api_v2.0_reference.html#appendix_d" target="_top">Google
+            Apps Provisioning API V2.0 Reference: Appendix D</a>.
+        </p>
+<p>
+            While the complete list of errors received is available within
+            ServiceException as an array by calling <code class="code">getErrors()</code>,
+            often it is convenient to know if one specific error occurred. For
+            these cases the presence of an error can be determined by calling
+            <code class="code">hasError()</code>.
+        </p>
+<p>
+            The following example demonstrates how to detect if a requested
+            resource doesn't exist and handle the fault gracefully:
+        </p>
+<pre class="programlisting">
+function retrieveUser ($username) {
+    $query = $gdata-&gt;newUserQuery($username);
+    try {
+        $user = $gdata-&gt;getUserEntry($query);
+    } catch (Zend_Gdata_Gapps_ServiceException $e) {
+        // Set the user to null if not found
+        if ($e-&gt;hasError(Zend_Gdata_Gapps_Error::ENTITY_DOES_NOT_EXIST)) {
+            $user = null;
+        } else {
+            throw $e;
+        }
+    }
+    return $user;
+}
+
+        </pre>
+</div>
+</div>
+<div class="navfooter"><table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="zend.gdata.spreadsheets.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="zend.gdata.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="zend.gdata.gbase.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">1.6. Using Google Spreadsheets </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> 1.8. Using Google Base</td>
+</tr>
+</table></div>
+<div class="revinfo"></div>
+</body>
+</html>

@@ -1,0 +1,592 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>1.10. Using the YouTube Data API</title>
+<link rel="stylesheet" href="dbstyle.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="index.html" title="Programmer's Reference Guide">
+<link rel="up" href="zend.gdata.html" title="Chapter 1. Zend_Gdata">
+<link rel="prev" href="zend.gdata.photos.html" title="1.9. Using Picasa Web Albums">
+<link rel="next" href="zend.gdata.exception.html" title="1.11. Catching Gdata Exceptions">
+<link rel="chapter" href="zend.gdata.html" title="Chapter 1. Zend_Gdata">
+<link rel="index" href="the.index.html" title="Index">
+<link rel="subsection" href="zend.gdata.youtube.html#zend.gdata.youtube.authentication" title="1.10.1. Authentication">
+<link rel="subsection" href="zend.gdata.youtube.html#zend.gdata.youtube.developer_key" title="1.10.2. Developer Keys and Client ID">
+<link rel="subsection" href="zend.gdata.youtube.html#zend.gdata.youtube.videos" title="1.10.3. Retrieving public video feeds">
+<link rel="subsection" href="zend.gdata.youtube.html#zend.gdata.youtube.comments" title="1.10.4. Retrieving video comments">
+<link rel="subsection" href="zend.gdata.youtube.html#zend.gdata.youtube.playlists" title="1.10.5. Retrieving playlist feeds">
+<link rel="subsection" href="zend.gdata.youtube.html#zend.gdata.youtube.subscriptions" title="1.10.6. Retrieving a list of a user's subscriptions">
+<link rel="subsection" href="zend.gdata.youtube.html#zend.gdata.youtube.profile" title="1.10.7. Retrieving a user's profile">
+<link rel="subsection" href="zend.gdata.youtube.html#zend.gdata.youtube.uploads" title="1.10.8. Uploading Videos to YouTube">
+<link rel="subsection" href="zend.gdata.youtube.html#zend.gdata.youtube.uploads.browser" title="1.10.9. Browser-based upload">
+<link rel="subsection" href="zend.gdata.youtube.html#zend.gdata.youtube.uploads.status" title="1.10.10. Checking upload status">
+<link rel="subsection" href="zend.gdata.youtube.html#zend.gdata.youtube.other" title="1.10.11. Other Functions">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader"><table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">1.10. Using the YouTube Data API</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="zend.gdata.photos.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 1. Zend_Gdata</th>
+<td width="20%" align="right"> <a accesskey="n" href="zend.gdata.exception.html">Next</a>
+</td>
+</tr>
+</table></div>
+<div class="sect1" lang="en">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="zend.gdata.youtube"></a>1.10. Using the YouTube Data API</h2></div></div></div>
+<p>
+        The YouTube Data API offers read and write access to YouTube's content. 
+        Users can perform unauthenticated requests to Google Data feeds to 
+        retrieve feeds of popular videos, comments, public information about 
+        YouTube user profiles, user playlists, favorites, subscriptions and so on.
+    </p>
+<p>
+      For more information on the YouTube Data API, please refer
+      to the official <a href="http://code.google.com/apis/youtube/developers_guide_php.html" target="_top">
+        PHP Developer's Guide</a> on code.google.com.
+    </p>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.youtube.authentication"></a>1.10.1. Authentication</h3></div></div></div>
+<p>
+          The YouTube Data API allows read-only access to public data, which 
+          does not require authentication. For any write requests, a user 
+          needs to authenticate either using ClientLogin or AuthSub authentication. Please refer to the <a href="http://code.google.com/apis/youtube/developers_guide_php.html#Authentication" target="_top">Authentication section in the PHP Developer's Guide</a> for more detail.
+        </p>
+</div>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.youtube.developer_key"></a>1.10.2. Developer Keys and Client ID</h3></div></div></div>
+<p>
+            A developer key identifies the YouTube developer that is submitting 
+            an API request. A client ID identifies your application for logging 
+            and debugging purposes. Please visit <a href="http://code.google.com/apis/youtube/dashboard/" target="_top">http://code.google.com/apis/youtube/dashboard/</a> to obtain a developer key and client ID. The example below demonstrates how to pass the developer key and client ID to the <a href="http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_YouTube.html" target="_top">Zend_Gdata_YouTube</a> service object.
+        </p>
+<pre class="programlisting">
+$yt = new Zend_Gdata_YouTube($httpClient, $applicationId, $clientId, $developerKey);
+
+            </pre>
+</div>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.youtube.videos"></a>1.10.3. Retrieving public video feeds</h3></div></div></div>
+<p>
+          The YouTube Data API provides numerous feeds that return a list of 
+            videos, such as standard feeds, related videos, video responses, 
+            user's uploads, and user's favorites. For example, the 
+            user's uploads feed returns all videos uploaded by a specific user. 
+            See the <a href="http://code.google.com/apis/youtube/reference.html#Video_Feeds" target="_top">
+            YouTube API reference guide</a> for a detailed list of available feeds.
+        </p>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.youtube.videos.searching"></a>1.10.3.1. Searching for videos by metadata</h4></div></div></div>
+<p>
+                You can retrieve a list of videos that match specified 
+                search criteria, using the YouTubeQuery class. The following query
+                looks for videos which contain the word "cat" in their 
+                metadata, starting with the 10th video and displaying 20 
+                videos per page, ordered by the view count.
+            </p>
+<pre class="programlisting">
+$yt = new Zend_Gdata_YouTube();
+$query = $yt-&gt;newVideoQuery();
+$query-&gt;videoQuery = 'cat';
+$query-&gt;startIndex = 10;
+$query-&gt;maxResults = 20;
+$query-&gt;orderBy = 'viewCount';
+
+echo $query-&gt;queryUrl . "\n";
+$videoFeed = $yt-&gt;getVideoFeed($query); 
+
+foreach ($videoFeed as $videoEntry) {
+    echo "---------VIDEO----------\n";
+    echo "Title: " . $videoEntry-&gt;getVideoTitle() . "\n";
+    echo "\nDescription:\n";
+    echo $videoEntry-&gt;getVideoDescription();
+    echo "\n\n\n";
+}
+
+            </pre>
+<p>
+                For more details on the different query parameters, please 
+                refer to the <a href="http://code.google.com/apis/youtube/reference.html#Searching_for_videos" target="_top">
+                Reference Guide</a>.  The available helper functions in
+              <a href="http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_YouTube_VideoQuery.html" target="_top">
+                Zend_Gdata_YouTube_VideoQuery</a> for each of these parameters are 
+                described in more detail in the <a href="http://code.google.com/apis/youtube/developers_guide_php.html#SearchingVideos" target="_top">PHP Developer's Guide</a>.
+            </p>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.youtube.videos.searchingcategories"></a>1.10.3.2. Searching for videos by categories and tags/keywords</h4></div></div></div>
+<p>
+                Searching for videos in specific categories is done by
+                generating a <a href="http://code.google.com/apis/youtube/reference.html#Category_search" target="_top">
+                specially formatted URL</a>.  For example, to search for 
+                comedy videos which contain the keyword dog:
+            </p>
+<pre class="programlisting">
+$yt = new Zend_Gdata_YouTube();
+$query = $yt-&gt;newVideoQuery();
+$query-&gt;category = 'Comedy/dog';
+
+echo $query-&gt;queryUrl . "\n";
+$videoFeed = $yt-&gt;getVideoFeed($query);
+
+            </pre>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.youtube.videos.standard"></a>1.10.3.3. Retrieving standard feeds</h4></div></div></div>
+<p>
+              The YouTube Data API has a number of 
+                <a href="http://code.google.com/apis/youtube/reference.html#Standard_feeds" target="_top">
+                standard feeds</a>.  These standard feeds can be retrieved
+                as <a href="http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_YouTube_VideoFeed.html" target="_top">Zend_Gdata_YouTube_VideoFeed</a> objects using the specified 
+                URLs, using the predefined constants within the <a href="http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_YouTube.html" target="_top">Zend_Gdata_YouTube</a> class 
+                (Zend_Gdata_YouTube::STANDARD_TOP_RATED_URI for example) or 
+                using the predefined helper methods (see code listing below).
+            </p>
+<p>
+                To retrieve the top rated videos using the helper method:
+            </p>
+<pre class="programlisting">
+$yt = new Zend_Gdata_YouTube();
+$videoFeed = $yt-&gt;getTopRatedVideoFeed();
+
+            </pre>
+<p>
+                There are also query parameters to specify the time period
+                over which the standard feed is computed.
+            </p>
+<p>
+                For example, to retrieve the top rated videos for today:
+            </p>
+<pre class="programlisting">
+$yt = new Zend_Gdata_YouTube();
+$query = $yt-&gt;newVideoQuery();
+$query-&gt;setTime('today');
+$videoFeed = $yt-&gt;getTopRatedVideoFeed($query);
+
+            </pre>
+<p>
+                Alternatively, you could just retrieve the feed using the
+                URL:
+            </p>
+<pre class="programlisting">
+$yt = new Zend_Gdata_YouTube();
+$url = 'http://gdata.youtube.com/feeds/standardfeeds/top_rated?time=today'
+$videoFeed = $yt-&gt;getVideoFeed($url);
+
+            </pre>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.youtube.videos.user"></a>1.10.3.4. Retrieving videos uploaded by a user</h4></div></div></div>
+<p>
+                You can retrieve a list of videos uploaded by a particular user
+                using a simple helper method. This example retrieves videos 
+                uploaded by the user 'liz'.
+            </p>
+<pre class="programlisting">
+$yt = new Zend_Gdata_YouTube();
+$videoFeed = $yt-&gt;getUserUploads('liz');
+
+            </pre>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.youtube.videos.favorites"></a>1.10.3.5. Retrieving videos favorited by a user</h4></div></div></div>
+<p>
+                You can retrieve a list of a user's favorite videos
+                using a simple helper method. This example retrieves videos 
+                favorited by the user 'liz'.
+            </p>
+<pre class="programlisting">
+$yt = new Zend_Gdata_YouTube();
+$videoFeed = $yt-&gt;getUserFavorites('liz');
+
+            </pre>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.youtube.videos.responses"></a>1.10.3.6. Retrieving video responses for a video</h4></div></div></div>
+<p>
+                You can retrieve a list of a video's video responses
+                using a simple helper method. This example retrieves video
+                response for a video with the ID 'abc123813abc'.
+            </p>
+<pre class="programlisting">
+$yt = new Zend_Gdata_YouTube();
+$videoFeed = $yt-&gt;getVideoResponseFeed('abc123813abc');
+
+            </pre>
+</div>
+</div>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.youtube.comments"></a>1.10.4. Retrieving video comments</h3></div></div></div>
+<p>
+            The comments for each YouTube video can be retrieved in 
+            several ways.  To retrieve the comments for the video with 
+            the ID 'abc123813abc', use the following code: 
+        </p>
+<pre class="programlisting">
+$yt = new Zend_Gdata_YouTube();
+$commentFeed = $yt-&gt;getVideoCommentFeed('abc123813abc'); 
+
+foreach ($commentFeed as $commentEntry) {
+    echo $commentEntry-&gt;title-&gt;text . "\n";
+    echo $commentEntry-&gt;content-&gt;text . "\n\n\n";
+}
+
+        </pre>
+<p>
+            Comments can also be retrieved for a video if you have
+            a copy of the <a href="http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_YouTube_VideoEntry.html" target="_top">Zend_Gdata_YouTube_VideoEntry</a> object:
+        </p>
+<pre class="programlisting">
+$yt = new Zend_Gdata_YouTube();
+$videoEntry = $yt-&gt;getVideoEntry('abc123813abc'); 
+// we don't know the video ID in this example, but we do have the URL
+$commentFeed = $yt-&gt;getVideoCommentFeed(null,
+                                        $videoEntry-&gt;comments-&gt;href);
+
+            </pre>
+</div>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.youtube.playlists"></a>1.10.5. Retrieving playlist feeds</h3></div></div></div>
+<p>
+          The YouTube Data API provides information about users, including
+            profiles, playlists, subscriptions, and more.
+        </p>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.youtube.playlists.user"></a>1.10.5.1. Retrieving the playlists of a user</h4></div></div></div>
+<p>
+                The library provides a helper method to retrieve
+                the playlists associated with a given user.  To retrieve the
+                playlists for the user 'liz':
+            </p>
+<pre class="programlisting">
+$yt = new Zend_Gdata_YouTube();
+$playlistListFeed = $yt-&gt;getPlaylistListFeed('liz'); 
+
+foreach ($playlistListFeed as $playlistEntry) {
+    echo $playlistEntry-&gt;title-&gt;text . "\n";
+    echo $playlistEntry-&gt;description-&gt;text . "\n";
+    echo $playlistEntry-&gt;getPlaylistVideoFeedUrl() . "\n\n\n";
+}
+
+            </pre>
+</div>
+<div class="sect3" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="zend.gdata.youtube.playlists.special"></a>1.10.5.2. Retrieving a specific playlist</h4></div></div></div>
+<p>
+                The library provides a helper method to retrieve
+                the videos associated with a given playlist.  To retrieve the
+                playlists for a specific playlist entry:
+            </p>
+<pre class="programlisting">
+$feedUrl = $playlistEntry-&gt;getPlaylistVideoFeedUrl();
+$playlistVideoFeed = $yt-&gt;getPlaylistVideoFeed($feedUrl);
+
+            </pre>
+</div>
+</div>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.youtube.subscriptions"></a>1.10.6. Retrieving a list of a user's subscriptions</h3></div></div></div>
+<p>
+            A user can have several types of subscriptions: channel 
+            subscription, tag subscription, or favorites subscription.
+            A <a href="http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_YouTube_SubscriptionEntry.html" target="_top">Zend_Gdata_YouTube_SubscriptionEntry</a> is used to represent
+            individual subscriptions.
+        </p>
+<p>
+            To retrieve all subscriptions for the user 'liz':
+        </p>
+<pre class="programlisting">
+$yt = new Zend_Gdata_YouTube();
+$subscriptionFeed = $yt-&gt;getSubscriptionFeed('liz'); 
+
+foreach ($subscriptionFeed as $subscriptionEntry) {
+    echo $subscriptionEntry-&gt;title-&gt;text . "\n";
+}
+
+        </pre>
+</div>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.youtube.profile"></a>1.10.7. Retrieving a user's profile</h3></div></div></div>
+<p>
+            You can retrieve the public profile information
+            for any YouTube user.  To retrieve the profile
+            for the user 'liz':
+        </p>
+<pre class="programlisting">
+$yt = new Zend_Gdata_YouTube();
+$userProfile = $yt-&gt;getUserProfile('liz'); 
+echo "username: " . $userProfile-&gt;username-&gt;text . "\n";
+echo "age: " . $userProfile-&gt;age-&gt;text . "\n";
+echo "hometown: " . $userProfile-&gt;hometown-&gt;text . "\n";
+
+        </pre>
+</div>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.youtube.uploads"></a>1.10.8. Uploading Videos to YouTube</h3></div></div></div>
+<p>
+        Please make sure to review the diagrams in the 
+        <a href="http://code.google.com/apis/youtube/developers_guide_protocol.html#Process_Flows_for_Uploading_Videos" target="_top">protocol guide</a> on code.google.com for a high-level 
+        overview of the upload process. Uploading videos can be done in one of 
+        two ways: either by uploading the video directly or by sending just the 
+        video meta-data and having a user upload the video through an HTML form.
+      </p>
+<p>
+        In order to upload a video directly, you must first construct a new 
+        <a href="http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_YouTube_VideoEntry.html" target="_top">Zend_Gdata_YouTube_VideoEntry</a> object and specify some required meta-data
+        The following example shows uploading the Quicktime video "mytestmovie.mov" 
+        to YouTube with the following properties:
+      </p>
+<div class="table">
+<a name="zend.gdata.youtube.uploads.metadata"></a><p class="title"><b>Table 1.1. Metadata used in the code-sample below</b></p>
+<div class="table-contents"><table summary="Metadata used in the code-sample below" border="1">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead><tr>
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="left">Title</td>
+<td align="left">My Test Movie</td>
+</tr>
+<tr>
+<td align="left">Category</td>
+<td align="left">Autos</td>
+</tr>
+<tr>
+<td align="left">Keywords</td>
+<td align="left">cars, funny</td>
+</tr>
+<tr>
+<td align="left">Description</td>
+<td align="left">My description</td>
+</tr>
+<tr>
+<td align="left">Filename</td>
+<td align="left">mytestmovie.mov</td>
+</tr>
+<tr>
+<td align="left">File MIME type</td>
+<td align="left">video/quicktime</td>
+</tr>
+<tr>
+<td align="left">Video private?</td>
+<td align="left">false</td>
+</tr>
+<tr>
+<td align="left">Video location</td>
+<td align="left">37, -122 (lat, long)</td>
+</tr>
+<tr>
+<td align="left">Developer Tags</td>
+<td align="left">mydevelopertag, anotherdevelopertag</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<br class="table-break"><p>
+        The code below creates a blank <a href="http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_YouTube_VideoEntry.html" target="_top">Zend_Gdata_YouTube_VideoEntry</a> to be uploaded. 
+        A <a href="http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_App_MediaFileSource.html" target="_top">Zend_Gdata_App_MediaFileSource</a> object is then used to hold the actual video file. Under the hood, the <a href="http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_YouTube_Extension_MediaGroup.html" target="_top">Zend_Gdata_YouTube_Extension_MediaGroup</a> object is used to hold all 
+        of the video's meta-data. Our helper methods detailed below allow you to 
+        just set the video meta-data without having to worry about the media group object. 
+        The $uploadUrl is the location where the new entry gets posted to. 
+        This can be specified either with the $userName of the 
+        currently authenticated user, or, alternatively, you can simply use the 
+        string 'default' to refer to the currently authenticated user.
+      </p>
+<pre class="programlisting">
+$yt = new Zend_Gdata_YouTube($httpClient);
+$myVideoEntry = new Zend_Gdata_YouTube_VideoEntry();
+
+$filesource = $yt-&gt;newMediaFileSource('mytestmovie.mov');
+$filesource-&gt;setContentType('video/quicktime');
+$filesource-&gt;setSlug('mytestmovie.mov');
+    
+$myVideoEntry-&gt;setMediaSource($filesource);
+    
+$myVideoEntry-&gt;setVideoTitle('My Test Movie');
+$myVideoEntry-&gt;setVideoDescription('My Test Movie');
+// Note that category must be a valid YouTube category !
+$myVideoEntry-&gt;setVideoCategory('Comedy');
+    
+// Set keywords, note that this must be a comma separated string
+// and that each keyword cannot contain whitespace
+$myVideoEntry-&gt;SetVideoTags('cars, funny');
+    
+// Optionally set some developer tags
+$myVideoEntry-&gt;setVideoDeveloperTags(array('mydevelopertag', 
+                                           'anotherdevelopertag'));
+    
+// Optionally set the video's location
+$yt-&gt;registerPackage('Zend_Gdata_Geo');
+$yt-&gt;registerPackage('Zend_Gdata_Geo_Extension');
+$where = $yt-&gt;newGeoRssWhere();
+$position = $yt-&gt;newGmlPos('37.0 -122.0');
+$where-&gt;point = $yt-&gt;newGmlPoint($position);
+$myVideoEntry-&gt;setWhere($where);
+    
+// Upload URI for the currently authenticated user
+$uploadUrl = 
+    'http://uploads.gdata.youtube.com/feeds/users/default/uploads';
+    
+// Try to upload the video, catching a Zend_Gdata_App_HttpException
+// if availableor just a regular Zend_Gdata_App_Exception
+
+try {
+    $newEntry = $yt-&gt;insertEntry($myVideoEntry, 
+                                 $uploadUrl,
+                                 'Zend_Gdata_YouTube_VideoEntry');
+} catch (Zend_Gdata_App_HttpException $httpException) {
+    echo $httpException-&gt;getRawResponseBody();
+} catch (Zend_Gdata_App_Exception $e) {
+    echo $e-&gt;getMessage();
+}
+
+    </pre>
+<p>
+      To upload a video as private, simply use: $myVideoEntry-&gt;setVideoPrivate(); prior to 
+      performing the upload. $videoEntry-&gt;isVideoPrivate() can be used to check whether a video 
+      entry is private or not.
+    </p>
+</div>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.youtube.uploads.browser"></a>1.10.9. Browser-based upload</h3></div></div></div>
+<p>
+        Browser-based uploading is performed almost identically to direct uploading, 
+        except that you do not attach a <a href="http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_App_MediaFileSource.html" target="_top">Zend_Gdata_App_MediaFileSource</a> object to 
+        the <a href="http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_YouTube_VideoEntry.html" target="_top">Zend_Gdata_YouTube_VideoEntry</a> you are constructing. Instead you simply 
+        submit all of your video's meta-data to receive back a token element 
+        which can be used to construct an HTML upload form.
+      </p>
+<pre class="programlisting">
+$yt = new Zend_Gdata_YouTube($httpClient);
+      
+$myVideoEntry= new Zend_Gdata_YouTube_VideoEntry();
+$myVideoEntry-&gt;setVideoTitle('My Test Movie');
+$myVideoEntry-&gt;setVideoDescription('My Test Movie');
+
+// Note that category must be a valid YouTube category
+$myVideoEntry-&gt;setVideoCategory('Comedy'); 
+$myVideoEntry-&gt;SetVideoTags('cars, funny');
+        
+$tokenHandlerUrl = 'http://gdata.youtube.com/action/GetUploadToken';
+$tokenArray = $yt-&gt;getFormUploadToken($myVideoEntry, $tokenHandlerUrl);
+$tokenValue = $tokenArray['token'];
+$postUrl = $tokenArray['url'];
+
+      </pre>
+<p>
+      The above code prints out a link and a token that is used to construct an 
+      HTML form to display in the user's browser. A simple example form is shown 
+      below with $tokenValue representing the content of the returned token element, 
+      as shown being retrieved from $myVideoEntry above. In order for the user 
+      to be redirected to your website after submitting the form, make sure to 
+      append a $nextUrl parameter to the $postUrl above, which functions in the 
+      same way as the $next parameter of an AuthSub link. The only difference is 
+      that here, instead of a single-use token, a status and an id variable are 
+      returned in the URL.
+    </p>
+<pre class="programlisting">
+// place to redirect user after upload
+$nextUrl = 'http://mysite.com/youtube_uploads';
+    
+$form = '&lt;form action="'. $postUrl .'?nexturl='. $nextUrl .
+        '" method="post" enctype="multipart/form-data"&gt;'. 
+        '&lt;input name="file" type="file"/&gt;'. 
+        '&lt;input name="token" type="hidden" value="'. $tokenValue .'"/&gt;'.
+        '&lt;input value="Upload Video File" type="submit" /&gt;'. 
+        '&lt;/form&gt;';
+
+      </pre>
+</div>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.youtube.uploads.status"></a>1.10.10. Checking upload status</h3></div></div></div>
+<p>
+        After uploading a video, it will immediately be visible in an 
+        authenticated user's uploads feed. However, it will not be public on 
+        the site until it has been processed. Videos that have been rejected or 
+        failed to upload successfully will also only be in the authenticated 
+        user's uploads feed. The following code checks the status of a 
+        <a href="http://framework.zend.com/apidoc/core/Zend_Gdata/Zend_Gdata_YouTube_VideoEntry.html" target="_top">Zend_Gdata_YouTube_VideoEntry</a> to see if it is not live yet or if it has been rejected.
+      </p>
+<pre class="programlisting">
+try {
+    $control = $videoEntry-&gt;getControl();
+} catch (Zend_Gdata_App_Exception $e) {
+    echo $e-&gt;getMessage();
+}
+
+if ($control instanceof Zend_Gdata_App_Extension_Control) {
+    if ($control-&gt;getDraft() != null &amp;&amp; 
+        $control-&gt;getDraft()-&gt;getText() == 'yes') {
+        $state = $videoEntry-&gt;getVideoState();
+        
+        if ($state instanceof Zend_Gdata_YouTube_Extension_State) {
+            print 'Upload status: '
+                  . $state-&gt;getName() 
+                  .' '.  $state-&gt;getText();
+        } else {
+            print 'Not able to retrieve the video status information'
+                  .' yet. ' . "Please try again shortly.\n";
+        }
+    }
+}
+
+      </pre>
+</div>
+<div class="sect2" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="zend.gdata.youtube.other"></a>1.10.11. Other Functions</h3></div></div></div>
+<p>
+        In addition to the functionality described above, the YouTube API 
+        contains many other functions that allow you to modify video meta-data, 
+        delete video entries and use the full range of community features on the site. 
+        Some of the community features that can be modified through the API include: 
+        ratings, comments, playlists, subscriptions, user profiles, contacts and messages.
+      </p>
+<p>
+        Please refer to the full documentation available in the 
+        <a href="http://code.google.com/apis/youtube/developers_guide_php.html" target="_top">PHP Developer's  Guide</a> on code.google.com.
+      </p>
+</div>
+</div>
+<div class="navfooter"><table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="zend.gdata.photos.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="zend.gdata.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="zend.gdata.exception.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">1.9. Using Picasa Web Albums </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> 1.11. Catching Gdata Exceptions</td>
+</tr>
+</table></div>
+<div class="revinfo"></div>
+</body>
+</html>

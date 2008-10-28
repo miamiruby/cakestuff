@@ -1,0 +1,975 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs For Class Zend_Mime</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+						<script src="../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../media/images/plus.png";
+				imgMinus.src = "../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> Zend_Mime</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+											<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+						
+			</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Support class for MultiPart Mime Messages</p>
+	<ul class="tags">
+				<li><span class="field">copyright:</span> Copyright (c) 2005-2008 Zend Technologies USA Inc. (http://www.zend.com)</li>
+				<li><span class="field">license:</span> <a href="http://framework.zend.com/license/new-bsd">New BSD License</a></li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_Mime.php.html">/Mime.php</a> (line <span class="field">30</span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+	<a name="sec-const-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Class Constant Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Constants</span> (<a href="#sec-consts">details</a>)
+												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<div class="const-summary">
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#DISPOSITION_ATTACHMENT" title="details" class="const-name">DISPOSITION_ATTACHMENT</a> = 					<span class="var-type"> 'attachment'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#DISPOSITION_INLINE" title="details" class="const-name">DISPOSITION_INLINE</a> = 					<span class="var-type"> 'inline'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#ENCODING_7BIT" title="details" class="const-name">ENCODING_7BIT</a> = 					<span class="var-type"> '7bit'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#ENCODING_8BIT" title="details" class="const-name">ENCODING_8BIT</a> = 					<span class="var-type"> '8bit'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#ENCODING_BASE64" title="details" class="const-name">ENCODING_BASE64</a> = 					<span class="var-type"> 'base64'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#ENCODING_QUOTEDPRINTABLE" title="details" class="const-name">ENCODING_QUOTEDPRINTABLE</a> = 					<span class="var-type"> 'quoted-printable'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#LINEEND" title="details" class="const-name">LINEEND</a> = 					<span class="var-type"> &quot;\n&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#LINELENGTH" title="details" class="const-name">LINELENGTH</a> = 					<span class="var-type"> 74</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#MULTIPART_ALTERNATIVE" title="details" class="const-name">MULTIPART_ALTERNATIVE</a> = 					<span class="var-type"> 'multipart/alternative'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#MULTIPART_MIXED" title="details" class="const-name">MULTIPART_MIXED</a> = 					<span class="var-type"> 'multipart/mixed'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#MULTIPART_RELATED" title="details" class="const-name">MULTIPART_RELATED</a> = 					<span class="var-type"> 'multipart/related'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#TYPE_HTML" title="details" class="const-name">TYPE_HTML</a> = 					<span class="var-type"> 'text/html'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#TYPE_OCTETSTREAM" title="details" class="const-name">TYPE_OCTETSTREAM</a> = 					<span class="var-type"> 'application/octet-stream'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#TYPE_TEXT" title="details" class="const-name">TYPE_TEXT</a> = 					<span class="var-type"> 'text/plain'</span>
+
+				</div>
+							</div>
+		</div>
+	</div>
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+															<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+												<div class="var-title">
+					<img src="../media/images/StaticVariable.png" alt=" " />
+					static <span class="var-type">mixed</span>
+					<a href="#$makeUnique" title="details" class="var-name">$makeUnique</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/StaticVariable.png" alt=" " />
+					static <span class="var-type">mixed</span>
+					<a href="#$qpKeys" title="details" class="var-name">$qpKeys</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/StaticVariable.png" alt=" " />
+					static <span class="var-type">mixed</span>
+					<a href="#$qpKeysString" title="details" class="var-name">$qpKeysString</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/StaticVariable.png" alt=" " />
+					static <span class="var-type">mixed</span>
+					<a href="#$qpReplaceValues" title="details" class="var-name">$qpReplaceValues</a>
+				</div>
+																																																												<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$_boundary" title="details" class="var-name">$_boundary</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																			
+				<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+					static 						<span class="method-result">string</span>
+										<a href="#encode" title="details" class="method-name">encode</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$encoding</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$EOL</span> = <span class="var-default">self::LINEEND</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+					static 						<span class="method-result">string</span>
+										<a href="#encodeBase64" title="details" class="method-name">encodeBase64</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$lineLength</span> = <span class="var-default">self::LINELENGTH</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$lineEnd</span> = <span class="var-default">self::LINEEND</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+					static 						<span class="method-result">string</span>
+										<a href="#encodeQuotedPrintable" title="details" class="method-name">encodeQuotedPrintable</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$lineLength</span> = <span class="var-default">self::LINELENGTH</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$lineEnd</span> = <span class="var-default">self::LINEEND</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+					static 						<span class="method-result">boolean</span>
+										<a href="#isPrintable" title="details" class="method-name">isPrintable</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>)
+									</div>
+																											
+				<div class="method-definition">
+					<img src="../media/images/Constructor.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+											([<span class="var-type">null|string</span>&nbsp;<span class="var-name">$boundary</span> = <span class="var-default">null</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#boundary" title="details" class="method-name">boundary</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#boundaryLine" title="details" class="method-name">boundaryLine</a>
+											([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$EOL</span> = <span class="var-default">self::LINEEND</span>])
+									</div>
+																																															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#mimeEnd" title="details" class="method-name">mimeEnd</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$EOL</span> = <span class="var-default">self::LINEEND</span>])
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+												<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$makeUnique" id="$makeUnique"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/StaticVariable.png" />
+		<span class="var-title">
+			static <span class="var-type">mixed</span>
+			<span class="var-name">$makeUnique</span>
+			 = <span class="var-default"> 0</span>			(line <span class="line-number">48</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$qpKeys" id="$qpKeys"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../media/images/StaticVariable.png" />
+		<span class="var-title">
+			static <span class="var-type">mixed</span>
+			<span class="var-name">$qpKeys</span>
+			 = <span class="var-default">array(<br />        &quot;\x00&quot;,&quot;\x01&quot;,&quot;\x02&quot;,&quot;\x03&quot;,&quot;\x04&quot;,&quot;\x05&quot;,&quot;\x06&quot;,&quot;\x07&quot;,<br />        &quot;\x08&quot;,&quot;\x09&quot;,&quot;\x0A&quot;,&quot;\x0B&quot;,&quot;\x0C&quot;,&quot;\x0D&quot;,&quot;\x0E&quot;,&quot;\x0F&quot;,<br />        &quot;\x10&quot;,&quot;\x11&quot;,&quot;\x12&quot;,&quot;\x13&quot;,&quot;\x14&quot;,&quot;\x15&quot;,&quot;\x16&quot;,&quot;\x17&quot;,<br />        &quot;\x18&quot;,&quot;\x19&quot;,&quot;\x1A&quot;,&quot;\x1B&quot;,&quot;\x1C&quot;,&quot;\x1D&quot;,&quot;\x1E&quot;,&quot;\x1F&quot;,<br />        &quot;\x7F&quot;,&quot;\x80&quot;,&quot;\x81&quot;,&quot;\x82&quot;,&quot;\x83&quot;,&quot;\x84&quot;,&quot;\x85&quot;,&quot;\x86&quot;,<br />        &quot;\x87&quot;,&quot;\x88&quot;,&quot;\x89&quot;,&quot;\x8A&quot;,&quot;\x8B&quot;,&quot;\x8C&quot;,&quot;\x8D&quot;,&quot;\x8E&quot;,<br />        &quot;\x8F&quot;,&quot;\x90&quot;,&quot;\x91&quot;,&quot;\x92&quot;,&quot;\x93&quot;,&quot;\x94&quot;,&quot;\x95&quot;,&quot;\x96&quot;,<br />        &quot;\x97&quot;,&quot;\x98&quot;,&quot;\x99&quot;,&quot;\x9A&quot;,&quot;\x9B&quot;,&quot;\x9C&quot;,&quot;\x9D&quot;,&quot;\x9E&quot;,<br />        &quot;\x9F&quot;,&quot;\xA0&quot;,&quot;\xA1&quot;,&quot;\xA2&quot;,&quot;\xA3&quot;,&quot;\xA4&quot;,&quot;\xA5&quot;,&quot;\xA6&quot;,<br />        &quot;\xA7&quot;,&quot;\xA8&quot;,&quot;\xA9&quot;,&quot;\xAA&quot;,&quot;\xAB&quot;,&quot;\xAC&quot;,&quot;\xAD&quot;,&quot;\xAE&quot;,<br />        &quot;\xAF&quot;,&quot;\xB0&quot;,&quot;\xB1&quot;,&quot;\xB2&quot;,&quot;\xB3&quot;,&quot;\xB4&quot;,&quot;\xB5&quot;,&quot;\xB6&quot;,<br />        &quot;\xB7&quot;,&quot;\xB8&quot;,&quot;\xB9&quot;,&quot;\xBA&quot;,&quot;\xBB&quot;,&quot;\xBC&quot;,&quot;\xBD&quot;,&quot;\xBE&quot;,<br />        &quot;\xBF&quot;,&quot;\xC0&quot;,&quot;\xC1&quot;,&quot;\xC2&quot;,&quot;\xC3&quot;,&quot;\xC4&quot;,&quot;\xC5&quot;,&quot;\xC6&quot;,<br />        &quot;\xC7&quot;,&quot;\xC8&quot;,&quot;\xC9&quot;,&quot;\xCA&quot;,&quot;\xCB&quot;,&quot;\xCC&quot;,&quot;\xCD&quot;,&quot;\xCE&quot;,<br />        &quot;\xCF&quot;,&quot;\xD0&quot;,&quot;\xD1&quot;,&quot;\xD2&quot;,&quot;\xD3&quot;,&quot;\xD4&quot;,&quot;\xD5&quot;,&quot;\xD6&quot;,<br />        &quot;\xD7&quot;,&quot;\xD8&quot;,&quot;\xD9&quot;,&quot;\xDA&quot;,&quot;\xDB&quot;,&quot;\xDC&quot;,&quot;\xDD&quot;,&quot;\xDE&quot;,<br />        &quot;\xDF&quot;,&quot;\xE0&quot;,&quot;\xE1&quot;,&quot;\xE2&quot;,&quot;\xE3&quot;,&quot;\xE4&quot;,&quot;\xE5&quot;,&quot;\xE6&quot;,<br />        &quot;\xE7&quot;,&quot;\xE8&quot;,&quot;\xE9&quot;,&quot;\xEA&quot;,&quot;\xEB&quot;,&quot;\xEC&quot;,&quot;\xED&quot;,&quot;\xEE&quot;,<br />        &quot;\xEF&quot;,&quot;\xF0&quot;,&quot;\xF1&quot;,&quot;\xF2&quot;,&quot;\xF3&quot;,&quot;\xF4&quot;,&quot;\xF5&quot;,&quot;\xF6&quot;,<br />        &quot;\xF7&quot;,&quot;\xF8&quot;,&quot;\xF9&quot;,&quot;\xFA&quot;,&quot;\xFB&quot;,&quot;\xFC&quot;,&quot;\xFD&quot;,&quot;\xFE&quot;,<br />        &quot;\xFF&quot;<br />        )</span>			(line <span class="line-number">51</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$qpKeysString" id="$qpKeysString"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/StaticVariable.png" />
+		<span class="var-title">
+			static <span class="var-type">mixed</span>
+			<span class="var-name">$qpKeysString</span>
+			 = <span class="var-default"><br />         &quot;\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0A\x0B\x0C\x0D\x0E\x0F\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1A\x1B\x1C\x1D\x1E\x1F\x7F\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8A\x8B\x8C\x8D\x8E\x8F\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9A\x9B\x9C\x9D\x9E\x9F\xA0\xA1\xA2\xA3\xA4\xA5\xA6\xA7\xA8\xA9\xAA\xAB\xAC\xAD\xAE\xAF\xB0\xB1\xB2\xB3\xB4\xB5\xB6\xB7\xB8\xB9\xBA\xBB\xBC\xBD\xBE\xBF\xC0\xC1\xC2\xC3\xC4\xC5\xC6\xC7\xC8\xC9\xCA\xCB\xCC\xCD\xCE\xCF\xD0\xD1\xD2\xD3\xD4\xD5\xD6\xD7\xD8\xD9\xDA\xDB\xDC\xDD\xDE\xDF\xE0\xE1\xE2\xE3\xE4\xE5\xE6\xE7\xE8\xE9\xEA\xEB\xEC\xED\xEE\xEF\xF0\xF1\xF2\xF3\xF4\xF5\xF6\xF7\xF8\xF9\xFA\xFB\xFC\xFD\xFE\xFF&quot;</span>			(line <span class="line-number">99</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$qpReplaceValues" id="$qpReplaceValues"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../media/images/StaticVariable.png" />
+		<span class="var-title">
+			static <span class="var-type">mixed</span>
+			<span class="var-name">$qpReplaceValues</span>
+			 = <span class="var-default">array(<br />        &quot;=00&quot;,&quot;=01&quot;,&quot;=02&quot;,&quot;=03&quot;,&quot;=04&quot;,&quot;=05&quot;,&quot;=06&quot;,&quot;=07&quot;,<br />        &quot;=08&quot;,&quot;=09&quot;,&quot;=0A&quot;,&quot;=0B&quot;,&quot;=0C&quot;,&quot;=0D&quot;,&quot;=0E&quot;,&quot;=0F&quot;,<br />        &quot;=10&quot;,&quot;=11&quot;,&quot;=12&quot;,&quot;=13&quot;,&quot;=14&quot;,&quot;=15&quot;,&quot;=16&quot;,&quot;=17&quot;,<br />        &quot;=18&quot;,&quot;=19&quot;,&quot;=1A&quot;,&quot;=1B&quot;,&quot;=1C&quot;,&quot;=1D&quot;,&quot;=1E&quot;,&quot;=1F&quot;,<br />        &quot;=7F&quot;,&quot;=80&quot;,&quot;=81&quot;,&quot;=82&quot;,&quot;=83&quot;,&quot;=84&quot;,&quot;=85&quot;,&quot;=86&quot;,<br />        &quot;=87&quot;,&quot;=88&quot;,&quot;=89&quot;,&quot;=8A&quot;,&quot;=8B&quot;,&quot;=8C&quot;,&quot;=8D&quot;,&quot;=8E&quot;,<br />        &quot;=8F&quot;,&quot;=90&quot;,&quot;=91&quot;,&quot;=92&quot;,&quot;=93&quot;,&quot;=94&quot;,&quot;=95&quot;,&quot;=96&quot;,<br />        &quot;=97&quot;,&quot;=98&quot;,&quot;=99&quot;,&quot;=9A&quot;,&quot;=9B&quot;,&quot;=9C&quot;,&quot;=9D&quot;,&quot;=9E&quot;,<br />        &quot;=9F&quot;,&quot;=A0&quot;,&quot;=A1&quot;,&quot;=A2&quot;,&quot;=A3&quot;,&quot;=A4&quot;,&quot;=A5&quot;,&quot;=A6&quot;,<br />        &quot;=A7&quot;,&quot;=A8&quot;,&quot;=A9&quot;,&quot;=AA&quot;,&quot;=AB&quot;,&quot;=AC&quot;,&quot;=AD&quot;,&quot;=AE&quot;,<br />        &quot;=AF&quot;,&quot;=B0&quot;,&quot;=B1&quot;,&quot;=B2&quot;,&quot;=B3&quot;,&quot;=B4&quot;,&quot;=B5&quot;,&quot;=B6&quot;,<br />        &quot;=B7&quot;,&quot;=B8&quot;,&quot;=B9&quot;,&quot;=BA&quot;,&quot;=BB&quot;,&quot;=BC&quot;,&quot;=BD&quot;,&quot;=BE&quot;,<br />        &quot;=BF&quot;,&quot;=C0&quot;,&quot;=C1&quot;,&quot;=C2&quot;,&quot;=C3&quot;,&quot;=C4&quot;,&quot;=C5&quot;,&quot;=C6&quot;,<br />        &quot;=C7&quot;,&quot;=C8&quot;,&quot;=C9&quot;,&quot;=CA&quot;,&quot;=CB&quot;,&quot;=CC&quot;,&quot;=CD&quot;,&quot;=CE&quot;,<br />        &quot;=CF&quot;,&quot;=D0&quot;,&quot;=D1&quot;,&quot;=D2&quot;,&quot;=D3&quot;,&quot;=D4&quot;,&quot;=D5&quot;,&quot;=D6&quot;,<br />        &quot;=D7&quot;,&quot;=D8&quot;,&quot;=D9&quot;,&quot;=DA&quot;,&quot;=DB&quot;,&quot;=DC&quot;,&quot;=DD&quot;,&quot;=DE&quot;,<br />        &quot;=DF&quot;,&quot;=E0&quot;,&quot;=E1&quot;,&quot;=E2&quot;,&quot;=E3&quot;,&quot;=E4&quot;,&quot;=E5&quot;,&quot;=E6&quot;,<br />        &quot;=E7&quot;,&quot;=E8&quot;,&quot;=E9&quot;,&quot;=EA&quot;,&quot;=EB&quot;,&quot;=EC&quot;,&quot;=ED&quot;,&quot;=EE&quot;,<br />        &quot;=EF&quot;,&quot;=F0&quot;,&quot;=F1&quot;,&quot;=F2&quot;,&quot;=F3&quot;,&quot;=F4&quot;,&quot;=F5&quot;,&quot;=F6&quot;,<br />        &quot;=F7&quot;,&quot;=F8&quot;,&quot;=F9&quot;,&quot;=FA&quot;,&quot;=FB&quot;,&quot;=FC&quot;,&quot;=FD&quot;,&quot;=FE&quot;,<br />        &quot;=FF&quot;<br />        )</span>			(line <span class="line-number">75</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+
+<a name="var$_boundary" id="$_boundary"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$_boundary</span>
+						(line <span class="line-number">47</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																			<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+										<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodencode" id="encode"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static encode</span> (line <span class="line-number">202</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Encode the given string with the given encoding.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		static <span class="method-result">string</span>
+		<span class="method-name">
+			encode
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$encoding</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$EOL</span> = <span class="var-default">self::LINEEND</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$str</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$encoding</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$EOL</span><span class="var-description">: EOL string; defaults to <a href="../Zend_Mime/Zend_Mime.html#constLINEEND">Zend_Mime::LINEEND</a></span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodencodeBase64" id="encodeBase64"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static encodeBase64</span> (line <span class="line-number">170</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Encode a given string in base64 encoding and break lines  according to the maximum linelength.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		static <span class="method-result">string</span>
+		<span class="method-name">
+			encodeBase64
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$lineLength</span> = <span class="var-default">self::LINELENGTH</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$lineEnd</span> = <span class="var-default">self::LINEEND</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$str</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$lineLength</span><span class="var-description">: Defaults to <a href="../Zend_Mime/Zend_Mime.html#constLINELENGTH">LINELENGTH</a></span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$lineEnd</span><span class="var-description">: Defaults to <a href="../Zend_Mime/Zend_Mime.html#constLINEEND">LINEEND</a></span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodencodeQuotedPrintable" id="encodeQuotedPrintable"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static encodeQuotedPrintable</span> (line <span class="line-number">124</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Encode a given string with the QUOTED_PRINTABLE mechanism</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		static <span class="method-result">string</span>
+		<span class="method-name">
+			encodeQuotedPrintable
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$lineLength</span> = <span class="var-default">self::LINELENGTH</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$lineEnd</span> = <span class="var-default">self::LINEEND</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$str</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$lineLength</span><span class="var-description">: Defaults to <a href="../Zend_Mime/Zend_Mime.html#constLINELENGTH">LINELENGTH</a></span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$lineEnd</span><span class="var-description">: Defaults to <a href="../Zend_Mime/Zend_Mime.html#constLINEEND">LINEEND</a></span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodisPrintable" id="isPrintable"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static isPrintable</span> (line <span class="line-number">111</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Check if the given string is &quot;printable&quot;</p>
+<p class="description"><p>Checks that a string contains no unprintable characters. If this returns  false, encode the string for secure delivery.</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		static <span class="method-result">boolean</span>
+		<span class="method-name">
+			isPrintable
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$str</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Constructor.png" />
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">184</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Constructor</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			__construct
+		</span>
+					([<span class="var-type">null|string</span>&nbsp;<span class="var-name">$boundary</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">null|string</span>
+				<span class="var-name">$boundary</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodboundary" id="boundary"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">boundary</span> (line <span class="line-number">225</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return a MIME boundary</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			boundary
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodboundaryLine" id="boundaryLine"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">boundaryLine</span> (line <span class="line-number">237</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return a MIME boundary line</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			boundaryLine
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$EOL</span> = <span class="var-default">self::LINEEND</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$EOL</span><span class="var-description">: Defaults to <a href="../Zend_Mime/Zend_Mime.html#constLINEEND">LINEEND</a></span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmimeEnd" id="mimeEnd"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">mimeEnd</span> (line <span class="line-number">248</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return MIME ending</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			mimeEnd
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$EOL</span> = <span class="var-default">self::LINEEND</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$EOL</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	<a name="sec-consts"></a>
+	<div class="info-box">
+		<div class="info-box-title">Class Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Constants</a> (<span class="disabled">details</span>)
+						
+			
+												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+														| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="constDISPOSITION_ATTACHMENT" id="DISPOSITION_ATTACHMENT"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">DISPOSITION_ATTACHMENT</span>
+			 = <span class="const-default"> 'attachment'</span>
+			(line <span class="line-number">39</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constDISPOSITION_INLINE" id="DISPOSITION_INLINE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">DISPOSITION_INLINE</span>
+			 = <span class="const-default"> 'inline'</span>
+			(line <span class="line-number">40</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constENCODING_7BIT" id="ENCODING_7BIT"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">ENCODING_7BIT</span>
+			 = <span class="const-default"> '7bit'</span>
+			(line <span class="line-number">35</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constENCODING_8BIT" id="ENCODING_8BIT"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">ENCODING_8BIT</span>
+			 = <span class="const-default"> '8bit'</span>
+			(line <span class="line-number">36</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constENCODING_BASE64" id="ENCODING_BASE64"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">ENCODING_BASE64</span>
+			 = <span class="const-default"> 'base64'</span>
+			(line <span class="line-number">38</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constENCODING_QUOTEDPRINTABLE" id="ENCODING_QUOTEDPRINTABLE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">ENCODING_QUOTEDPRINTABLE</span>
+			 = <span class="const-default"> 'quoted-printable'</span>
+			(line <span class="line-number">37</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constLINEEND" id="LINEEND"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">LINEEND</span>
+			 = <span class="const-default"> &quot;\n&quot;</span>
+			(line <span class="line-number">42</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constLINELENGTH" id="LINELENGTH"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">LINELENGTH</span>
+			 = <span class="const-default"> 74</span>
+			(line <span class="line-number">41</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constMULTIPART_ALTERNATIVE" id="MULTIPART_ALTERNATIVE"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">MULTIPART_ALTERNATIVE</span>
+			 = <span class="const-default"> 'multipart/alternative'</span>
+			(line <span class="line-number">43</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constMULTIPART_MIXED" id="MULTIPART_MIXED"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">MULTIPART_MIXED</span>
+			 = <span class="const-default"> 'multipart/mixed'</span>
+			(line <span class="line-number">44</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constMULTIPART_RELATED" id="MULTIPART_RELATED"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">MULTIPART_RELATED</span>
+			 = <span class="const-default"> 'multipart/related'</span>
+			(line <span class="line-number">45</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constTYPE_HTML" id="TYPE_HTML"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">TYPE_HTML</span>
+			 = <span class="const-default"> 'text/html'</span>
+			(line <span class="line-number">34</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constTYPE_OCTETSTREAM" id="TYPE_OCTETSTREAM"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">TYPE_OCTETSTREAM</span>
+			 = <span class="const-default"> 'application/octet-stream'</span>
+			(line <span class="line-number">32</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constTYPE_TEXT" id="TYPE_TEXT"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">TYPE_TEXT</span>
+			 = <span class="const-default"> 'text/plain'</span>
+			(line <span class="line-number">33</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+						
+		</div>
+	</div>
+	
+	<p class="notes" id="credit">
+		Documentation generated on Mon, 13 Oct 2008 21:06:06 +0400 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
+	</p>
+	</div></body>
+</html>

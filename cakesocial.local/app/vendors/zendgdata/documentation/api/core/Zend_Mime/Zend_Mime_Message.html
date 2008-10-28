@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs For Class Zend_Mime_Message</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+						<script src="../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../media/images/plus.png";
+				imgMinus.src = "../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> Zend_Mime_Message</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">copyright:</span> Copyright (c) 2005-2008 Zend Technologies USA Inc. (http://www.zend.com)</li>
+				<li><span class="field">license:</span> <a href="http://framework.zend.com/license/new-bsd">New BSD License</a></li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_Mime---Message.php.html">/Mime/Message.php</a> (line <span class="field">39</span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$_mime" title="details" class="var-name">$_mime</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$_parts" title="details" class="var-name">$_parts</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																			
+				<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+					static 						<span class="method-result"><a href="../Zend_Mime/Zend_Mime_Message.html">Zend_Mime_Message</a></span>
+										<a href="#createFromMessage" title="details" class="method-name">createFromMessage</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$message</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$boundary</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$EOL</span> = <span class="var-default">Zend_Mime::LINEEND</span>])
+									</div>
+																																																																																							
+				<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+					static 						<span class="method-result">array</span>
+										<a href="#_disassembleMime" title="details" class="method-name">_disassembleMime</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$body</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$boundary</span>)
+									</div>
+																			
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#addPart" title="details" class="method-name">addPart</a>
+											(<span class="var-type"><a href="../Zend_Mime/Zend_Mime_Part.html">Zend_Mime_Part</a></span>&nbsp;<span class="var-name">$part</span>)
+									</div>
+																							
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#generateMessage" title="details" class="method-name">generateMessage</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$EOL</span> = <span class="var-default">Zend_Mime::LINEEND</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result"><a href="../Zend_Mime/Zend_Mime.html">Zend_Mime</a></span>
+										<a href="#getMime" title="details" class="method-name">getMime</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getPartContent" title="details" class="method-name">getPartContent</a>
+											(<span class="var-type">int</span>&nbsp;<span class="var-name">$partnum</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$EOL</span> = <span class="var-default">Zend_Mime::LINEEND</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#getPartHeaders" title="details" class="method-name">getPartHeaders</a>
+											(<span class="var-type">int</span>&nbsp;<span class="var-name">$partnum</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$EOL</span> = <span class="var-default">Zend_Mime::LINEEND</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#getPartHeadersArray" title="details" class="method-name">getPartHeadersArray</a>
+											(<span class="var-type">int</span>&nbsp;<span class="var-name">$partnum</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#getParts" title="details" class="method-name">getParts</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">boolean</span>
+										<a href="#isMultiPart" title="details" class="method-name">isMultiPart</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#setMime" title="details" class="method-name">setMime</a>
+											(<span class="var-type"><a href="../Zend_Mime/Zend_Mime.html">Zend_Mime</a></span>&nbsp;<span class="var-name">$mime</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#setParts" title="details" class="method-name">setParts</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$parts</span>)
+									</div>
+																			</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			
+<a name="var$_mime" id="$_mime"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$_mime</span>
+			 = <span class="var-default"> null</span>			(line <span class="line-number">43</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_parts" id="$_parts"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$_parts</span>
+			 = <span class="var-default">array()</span>			(line <span class="line-number">42</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodcreateFromMessage" id="createFromMessage"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static createFromMessage</span> (line <span class="line-number">242</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Decodes a MIME encoded string and returns a Zend_Mime_Message object with  all the MIME parts set according to the given string</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		static <span class="method-result"><a href="../Zend_Mime/Zend_Mime_Message.html">Zend_Mime_Message</a></span>
+		<span class="method-name">
+			createFromMessage
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$message</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$boundary</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$EOL</span> = <span class="var-default">Zend_Mime::LINEEND</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$message</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$boundary</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$EOL</span><span class="var-description">: EOL string; defaults to <a href="../Zend_Mime/Zend_Mime.html#constLINEEND">Zend_Mime::LINEEND</a></span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_disassembleMime" id="_disassembleMime"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static _disassembleMime</span> (line <span class="line-number">201</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Explode MIME multipart string into seperate parts</p>
+<p class="description"><p>Parts consist of the header and the body of each MIME part.</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		static <span class="method-result">array</span>
+		<span class="method-name">
+			_disassembleMime
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$body</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$boundary</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$body</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$boundary</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodaddPart" id="addPart"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">addPart</span> (line <span class="line-number">70</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Append a new Zend_Mime_Part to the current message</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			addPart
+		</span>
+					(<span class="var-type"><a href="../Zend_Mime/Zend_Mime_Part.html">Zend_Mime_Part</a></span>&nbsp;<span class="var-name">$part</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../Zend_Mime/Zend_Mime_Part.html">Zend_Mime_Part</a></span>
+				<span class="var-name">$part</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgenerateMessage" id="generateMessage"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">generateMessage</span> (line <span class="line-number">134</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Generate MIME-compliant message from the current configuration</p>
+<p class="description"><p>This can be a multipart message if more than one MIME part was added. If  only one part is present, the content of this part is returned. If no  part had been added, an empty string is returned.</p><p>Parts are seperated by the mime boundary as defined in Zend_Mime. If  <a href="../Zend_Mime/Zend_Mime_Message.html#methodsetMime">setMime()</a> has been called before this method, the Zend_Mime  object set by this call will be used. Otherwise, a new Zend_Mime object  is generated and used.</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			generateMessage
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$EOL</span> = <span class="var-default">Zend_Mime::LINEEND</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$EOL</span><span class="var-description">: EOL string; defaults to <a href="../Zend_Mime/Zend_Mime.html#constLINEEND">Zend_Mime::LINEEND</a></span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetMime" id="getMime"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getMime</span> (line <span class="line-number">110</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the Zend_Mime object in use by the message</p>
+<p class="description"><p>If the object was not present, it is created and returned. Can be used to  determine the boundary used in this message.</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Zend_Mime/Zend_Mime.html">Zend_Mime</a></span>
+		<span class="method-name">
+			getMime
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetPartContent" id="getPartContent"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getPartContent</span> (line <span class="line-number">187</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the (encoded) content of a given part as a string</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getPartContent
+		</span>
+					(<span class="var-type">int</span>&nbsp;<span class="var-name">$partnum</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$EOL</span> = <span class="var-default">Zend_Mime::LINEEND</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$partnum</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$EOL</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetPartHeaders" id="getPartHeaders"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getPartHeaders</span> (line <span class="line-number">176</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the headers of a given part as a string</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getPartHeaders
+		</span>
+					(<span class="var-type">int</span>&nbsp;<span class="var-name">$partnum</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$EOL</span> = <span class="var-default">Zend_Mime::LINEEND</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$partnum</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$EOL</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetPartHeadersArray" id="getPartHeadersArray"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getPartHeadersArray</span> (line <span class="line-number">165</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the headers of a given part as an array</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getPartHeadersArray
+		</span>
+					(<span class="var-type">int</span>&nbsp;<span class="var-name">$partnum</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$partnum</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetParts" id="getParts"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getParts</span> (line <span class="line-number">50</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the list of all Zend_Mime_Parts in the message</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> of Zend_Mime_Part</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getParts
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodisMultiPart" id="isMultiPart"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">isMultiPart</span> (line <span class="line-number">84</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Check if message needs to be sent as multipart  MIME message or if it has only one part.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			isMultiPart
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodsetMime" id="setMime"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setMime</span> (line <span class="line-number">97</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set Zend_Mime object for the message</p>
+<p class="description"><p>This can be used to set the boundary specifically or to use a subclass of  Zend_Mime for generating the boundary.</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setMime
+		</span>
+					(<span class="var-type"><a href="../Zend_Mime/Zend_Mime.html">Zend_Mime</a></span>&nbsp;<span class="var-name">$mime</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../Zend_Mime/Zend_Mime.html">Zend_Mime</a></span>
+				<span class="var-name">$mime</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetParts" id="setParts"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setParts</span> (line <span class="line-number">60</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the given array of Zend_Mime_Parts as the array for the message</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setParts
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$parts</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$parts</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Mon, 13 Oct 2008 21:06:05 +0400 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
+	</p>
+	</div></body>
+</html>

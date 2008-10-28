@@ -1,0 +1,278 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Programmer's Reference Guide</title>
+<link rel="stylesheet" href="dbstyle.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+<link rel="start" href="index.html" title="Programmer's Reference Guide">
+<link rel="next" href="zend.gdata.html" title="Chapter 1. Zend_Gdata">
+<link rel="chapter" href="zend.gdata.html" title="Chapter 1. Zend_Gdata">
+<link rel="index" href="the.index.html" title="Index">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader"><table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Programmer's Reference Guide</th></tr>
+<tr>
+<td width="20%" align="left"> </td>
+<th width="60%" align="center"> </th>
+<td width="20%" align="right"> <a accesskey="n" href="zend.gdata.html">Next</a>
+</td>
+</tr>
+</table></div>
+<div class="book" lang="en">
+<div class="titlepage">
+<div>
+<div><h1 class="title">
+<a name="manual"></a>Programmer's Reference Guide</h1></div>
+<div><h2 class="subtitle">Zend Gdata</h2></div>
+<div><p class="copyright">Copyright © 2005-2008 
+                Zend Technologies Inc.
+                (<a href="http://www.zend.com" target="_top">http://www.zend.com</a>)
+            </p></div>
+<div><p class="pubdate">2008-10-13</p></div>
+</div>
+<hr>
+</div>
+<div class="toc">
+<p><b>Table of Contents</b></p>
+<dl>
+<dt><span class="chapter"><a href="zend.gdata.html">1. Zend_Gdata</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="zend.gdata.html#zend.gdata.introduction">1.1. Introduction to Gdata</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="zend.gdata.html#zend.gdata.introduction.structure">1.1.1. Structure of Zend_Gdata</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.html#zend.gdata.introduction.services">1.1.2. Interacting with Google Services</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.html#zend.gdata.introdduction.magicfactory">1.1.3. Obtaining instances of Zend_Gdata classes</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.html#zend.gdata.introduction.authentication">1.1.4. Google Data Client Authentication</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.html#zend.gdata.introduction.dependencies">1.1.5. Dependencies</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.html#zend.gdata.introduction.creation">1.1.6. Creating a new Gdata client</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.html#zend.gdata.introduction.parameters">1.1.7. Common query parameters</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.html#zend.gdata.introduction.getfeed">1.1.8. Fetching a feed</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.html#zend.gdata.introduction.paging">1.1.9. Working with multi-page feeds</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.html#zend.gdata.introduction.usefeedentry">1.1.10. Working with data in feeds and entries</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.html#zend.gdata.introduction.updateentry">1.1.11. Updating entries</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.html#zend.gdata.introduction.post">1.1.12. Posting entries to Google servers</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.html#zend.gdata.introduction.delete">1.1.13. Deleting entries on Google servers</a></span></dt>
+</dl></dd>
+<dt><span class="sect1"><a href="zend.gdata.authsub.html">1.2. Authenticating with AuthSub</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="zend.gdata.authsub.html#zend.gdata.authsub.login">1.2.1. Creating an AuthSub authenticated Http Client</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.authsub.html#zend.gdata.authsub.logout">1.2.2. Revoking AuthSub authentication</a></span></dt>
+</dl></dd>
+<dt><span class="sect1"><a href="zend.gdata.clientlogin.html">1.3. Authenticating with ClientLogin</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="zend.gdata.clientlogin.html#zend.gdata.clientlogin.login">1.3.1. Creating a ClientLogin authenticated Http Client</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.clientlogin.html#zend.gdata.clientlogin.terminating">1.3.2. Terminating a ClientLogin authenticated Http Client</a></span></dt>
+</dl></dd>
+<dt><span class="sect1"><a href="zend.gdata.calendar.html">1.4. Using Google Calendar</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="zend.gdata.calendar.html#zend.gdata.calendar.connecting">1.4.1. Connecting To The Calendar Service</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.calendar.html#zend.gdata.calendar.connecting.authentication">1.4.1.1. Authentication</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.calendar.html#zend.gdata.calendar.connecting.service">1.4.1.2. Creating A Service Instance</a></span></dt>
+</dl></dd>
+<dt><span class="sect2"><a href="zend.gdata.calendar.html#zend.gdata.calendar_retrieval">1.4.2. Retrieving A Calendar List</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.calendar.html#zend.gdata.event_retrieval">1.4.3. Retrieving Events</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.calendar.html#zend.gdata.event_retrieval.queries">1.4.3.1. Queries</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.calendar.html#zend.gdata.event_retrieval.start_time">1.4.3.2. Retrieving Events In Order Of Start Time</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.calendar.html#zend.gdata.event_retrieval.date_range">1.4.3.3. Retrieving Events In A Specified Date Range</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.calendar.html#zend.gdata.event_retrieval.fulltext">1.4.3.4. Retrieving Events By Fulltext Query</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.calendar.html#zend.gdata.event_retrieval.individual">1.4.3.5. Retrieving Individual Events</a></span></dt>
+</dl></dd>
+<dt><span class="sect2"><a href="zend.gdata.calendar.html#zend.gdata.calendar.creating_events">1.4.4. Creating Events</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.calendar.html#zend.gdata.calendar.creating_events.single">1.4.4.1. Creating Single-Occurrence Events</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.calendar.html#zend.gdata.calendar.creating_events.schedulers_reminders">1.4.4.2. Event Schedules and Reminders</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.calendar.html#zend.gdata.calendar.creating_events.recurring">1.4.4.3. Creating Recurring Events</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.calendar.html#zend.gdata.calendar.creating_events.quickadd">1.4.4.4. Using QuickAdd</a></span></dt>
+</dl></dd>
+<dt><span class="sect2"><a href="zend.gdata.calendar.html#zend.gdata.calendar.modifying_events">1.4.5. Modifying Events</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.calendar.html#zend.gdata.calendar.deleting_events">1.4.6. Deleting Events</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.calendar.html#zend.gdata.calendar.comments">1.4.7. Accessing Event Comments</a></span></dt>
+</dl></dd>
+<dt><span class="sect1"><a href="zend.gdata.docs.html">1.5. Using Google Documents List Data API</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="zend.gdata.docs.html#zend.gdata.docs.listdocuments">1.5.1. Get a List of Documents</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.docs.html#zend.gdata.docs.creating">1.5.2. Upload a Document</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.docs.html#zend.gdata.docs.queries">1.5.3. Searching the documents feed</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.docs.html#zend.gdata.docs.listwpdocuments">1.5.3.1. Get a List of Word Processing Documents</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.docs.html#zend.gdata.docs.listspreadsheets">1.5.3.2. Get a List of Spreadsheets</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.docs.html#zend.gdata.docs.textquery">1.5.3.3. Performing a text query</a></span></dt>
+</dl></dd>
+</dl></dd>
+<dt><span class="sect1"><a href="zend.gdata.spreadsheets.html">1.6. Using Google Spreadsheets</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.creating">1.6.1. Create a Spreadsheet</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.listspreadsheets">1.6.2. Get a List of Spreadsheets</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.listworksheets">1.6.3. Get a List of Worksheets</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.listfeeds">1.6.4. Interacting With List-based Feeds</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.listfeeds.get">1.6.4.1. Get a List-based Feed</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.listfeeds.reverse">1.6.4.2. Reverse-sort Rows</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.listfeeds.sq">1.6.4.3. Send a Structured Query</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.listfeeds.addrow">1.6.4.4. Add a Row</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.listfeeds.editrow">1.6.4.5. Edit a Row</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.listfeeds.deleterow">1.6.4.6. Delete a Row</a></span></dt>
+</dl></dd>
+<dt><span class="sect2"><a href="zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.cellfeeds">1.6.5. Interacting With Cell-based Feeds</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.cellfeeds.get">1.6.5.1. Get a Cell-based Feed</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.cellfeeds.cellrangequery">1.6.5.2. Send a Cell Range Query</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.spreadsheets.html#zend.gdata.spreadsheets.cellfeeds.updatecell">1.6.5.3. Change Contents of a Cell</a></span></dt>
+</dl></dd>
+</dl></dd>
+<dt><span class="sect1"><a href="zend.gdata.gapps.html">1.7. Using Google Apps Provisioning</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="zend.gdata.gapps.html#zend.gdata.gapps.domain">1.7.1. Setting the current domain</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.gapps.html#zend.gdata.gapps.domain.service">1.7.1.1. Setting the domain for the service class</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.gapps.html#zend.gdata.gapps.domain.query">1.7.1.2. Setting the domain for query classes</a></span></dt>
+</dl></dd>
+<dt><span class="sect2"><a href="zend.gdata.gapps.html#zend.gdata.gapps.users">1.7.2. Interacting with users</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.gapps.html#zend.gdata.gapps.users.creating">1.7.2.1. Creating a user account</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.gapps.html#zend.gdata.gapps.users.retrieving">1.7.2.2. Retrieving a user account</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.gapps.html#zend.gdata.gapps.users.retrievingAll">1.7.2.3. Retrieving all users in a domain</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.gapps.html#zend.gdata.gapps.users.updating">1.7.2.4. Updating a user account</a></span></dt>
+<dd><dl>
+<dt><span class="sect4"><a href="zend.gdata.gapps.html#zend.gdata.gapps.users.updating.resettingPassword">1.7.2.4.1. Resetting a user's password</a></span></dt>
+<dt><span class="sect4"><a href="zend.gdata.gapps.html#zend.gdata.gapps.users.updating.forcingPasswordChange">1.7.2.4.2. Forcing a user to change their password</a></span></dt>
+<dt><span class="sect4"><a href="zend.gdata.gapps.html#zend.gdata.gapps.users.updating.suspendingAccount">1.7.2.4.3. Suspending a user account</a></span></dt>
+<dt><span class="sect4"><a href="zend.gdata.gapps.html#zend.gdata.gapps.users.updating.grantingAdminRights">1.7.2.4.4. Granting administrative rights</a></span></dt>
+</dl></dd>
+<dt><span class="sect3"><a href="zend.gdata.gapps.html#zend.gdata.gapps.users.deleting">1.7.2.5. Deleting user accounts</a></span></dt>
+</dl></dd>
+<dt><span class="sect2"><a href="zend.gdata.gapps.html#zend.gdata.gapps.nicknames">1.7.3. Interacting with nicknames</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.gapps.html#zend.gdata.gapps.nicknames.creating">1.7.3.1. Creating a nickname</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.gapps.html#zend.gdata.gapps.nicknames.retrieving">1.7.3.2. Retrieving a nickname</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.gapps.html#zend.gdata.gapps.nicknames.retrievingUser">1.7.3.3. Retrieving all nicknames for a user</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.gapps.html#zend.gdata.gapps.nicknames.retrievingAll">1.7.3.4. Retrieving all nicknames in a domain</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.gapps.html#zend.gdata.gapps.nicknames.deleting">1.7.3.5. Deleting a nickname</a></span></dt>
+</dl></dd>
+<dt><span class="sect2"><a href="zend.gdata.gapps.html#zend.gdata.gapps.emailLists">1.7.4. Interacting with email lists</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.gapps.html#zend.gdata.gapps.emailLists.creating">1.7.4.1. Creating an email list</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.gapps.html#zend.gdata.gapps.emailList.retrieve">1.7.4.2. Retrieving all email lists to which a recipient is
+            subscribed</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.gapps.html#zend.gdata.gapps.emailLists.retrievingAll">1.7.4.3. Retrieving all email lists in a domain</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.gapps.html#zend.gdata.gapps.emailList.deleting">1.7.4.4. Deleting an email list</a></span></dt>
+</dl></dd>
+<dt><span class="sect2"><a href="zend.gdata.gapps.html#zend.gdata.gapps.emailListRecipients">1.7.5. Interacting with email list recipients</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.gapps.html#zend.gdata.gapps.emailListRecipients.adding">1.7.5.1. Adding a recipient to an email list</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.gapps.html#zend.gdata.gapps.emailListRecipients.retrieving">1.7.5.2. Retrieving the list of subscribers to an email list</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.gapps.html#zend.gdata.gapps.emailListRecipients.removing">1.7.5.3. Removing a recipient from an email list</a></span></dt>
+</dl></dd>
+<dt><span class="sect2"><a href="zend.gdata.gapps.html#zend.gdata.gapps.exceptions">1.7.6. Handling errors</a></span></dt>
+</dl></dd>
+<dt><span class="sect1"><a href="zend.gdata.gbase.html">1.8. Using Google Base</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="zend.gdata.gbase.html#zend.gdata.gbase.connect">1.8.1. Connect To The Base Service</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.gbase.html#zend.gdata.gbase.connect.authentication">1.8.1.1. Authentication</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.gbase.html#zend.gdata.gbase.connect.service">1.8.1.2. Create A Service Instance</a></span></dt>
+</dl></dd>
+<dt><span class="sect2"><a href="zend.gdata.gbase.html#zend.gdata.gbase.retrieve">1.8.2. Retrieve Items</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.gbase.html#zend.gdata.gbase.retrieve.query">1.8.2.1. Send a Structured Query</a></span></dt>
+<dd><dl>
+<dt><span class="sect4"><a href="zend.gdata.gbase.html#zend.gdata.gbase.retrieve.query.customeritems">1.8.2.1.1. Query Customer Items Feed</a></span></dt>
+<dt><span class="sect4"><a href="zend.gdata.gbase.html#zend.gdata.gbase.retrieve.query.snippets">1.8.2.1.2. Query Snippets Feed</a></span></dt>
+</dl></dd>
+<dt><span class="sect3"><a href="zend.gdata.gbase.html#zend.gdata.gbase.retrieve.iterate">1.8.2.2. Iterate through the Items</a></span></dt>
+</dl></dd>
+<dt><span class="sect2"><a href="zend.gdata.gbase.html#zend.gdata.gbase.crud">1.8.3. Insert, Update, and Delete Customer Items</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.gbase.html#zend.gdata.gbase.crud.insert">1.8.3.1. Insert an Item</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.gbase.html#zend.gdata.gbase.crud.modify">1.8.3.2. Modify an Item</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.gbase.html#zend.gdata.gbase.crud.delete">1.8.3.3. Delete an Item</a></span></dt>
+</dl></dd>
+</dl></dd>
+<dt><span class="sect1"><a href="zend.gdata.photos.html">1.9. Using Picasa Web Albums</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="zend.gdata.photos.html#zend.gdata.photos.connecting">1.9.1. Connecting To The Service</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.photos.html#zend.gdata.photos.connecting.authentication">1.9.1.1. Authentication</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.photos.html#zend.gdata.photos.connecting.service">1.9.1.2. Creating A Service Instance</a></span></dt>
+</dl></dd>
+<dt><span class="sect2"><a href="zend.gdata.photos.html#zend.gdata.photos.queries">1.9.2. Understanding and Constructing Queries</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.photos.html#zend.gdata.photos.retrieval">1.9.3. Retrieving Feeds And Entries</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.photos.html#zend.gdata.photos.user_retrieval">1.9.3.1. Retrieving A User</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.photos.html#zend.gdata.photos.album_retrieval">1.9.3.2. Retrieving An Album</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.photos.html#zend.gdata.photos.photo_retrieval">1.9.3.3. Retrieving A Photo</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.photos.html#zend.gdata.photos.comment_retrieval">1.9.3.4. Retrieving A Comment</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.photos.html#zend.gdata.photos.tag_retrieval">1.9.3.5. Retrieving A Tag</a></span></dt>
+</dl></dd>
+<dt><span class="sect2"><a href="zend.gdata.photos.html#zend.gdata.photos.creation">1.9.4. Creating Entries</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.photos.html#zend.gdata.photos.album_creation">1.9.4.1. Creating An Album</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.photos.html#zend.gdata.photos.photo_creation">1.9.4.2. Creating A Photo</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.photos.html#zend.gdata.photos.comment_creation">1.9.4.3. Creating A Comment</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.photos.html#zend.gdata.photos.tag_creation">1.9.4.4. Creating A Tag</a></span></dt>
+</dl></dd>
+<dt><span class="sect2"><a href="zend.gdata.photos.html#zend.gdata.photos.deletion">1.9.5. Deleting Entries</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.photos.html#zend.gdata.photos.album_deletion">1.9.5.1. Deleting An Album</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.photos.html#zend.gdata.photos.photo_deletion">1.9.5.2. Deleting A Photo</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.photos.html#zend.gdata.photos.comment_deletion">1.9.5.3. Deleting A Comment</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.photos.html#zend.gdata.photos.tag_deletion">1.9.5.4. Deleting A Tag</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.photos.html#zend.gdata.photos.optimistic_concurrenty">1.9.5.5. Optimistic Concurrency (Notes On Deletion)</a></span></dt>
+</dl></dd>
+</dl></dd>
+<dt><span class="sect1"><a href="zend.gdata.youtube.html">1.10. Using the YouTube Data API</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="zend.gdata.youtube.html#zend.gdata.youtube.authentication">1.10.1. Authentication</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.youtube.html#zend.gdata.youtube.developer_key">1.10.2. Developer Keys and Client ID</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.youtube.html#zend.gdata.youtube.videos">1.10.3. Retrieving public video feeds</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.youtube.html#zend.gdata.youtube.videos.searching">1.10.3.1. Searching for videos by metadata</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.youtube.html#zend.gdata.youtube.videos.searchingcategories">1.10.3.2. Searching for videos by categories and tags/keywords</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.youtube.html#zend.gdata.youtube.videos.standard">1.10.3.3. Retrieving standard feeds</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.youtube.html#zend.gdata.youtube.videos.user">1.10.3.4. Retrieving videos uploaded by a user</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.youtube.html#zend.gdata.youtube.videos.favorites">1.10.3.5. Retrieving videos favorited by a user</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.youtube.html#zend.gdata.youtube.videos.responses">1.10.3.6. Retrieving video responses for a video</a></span></dt>
+</dl></dd>
+<dt><span class="sect2"><a href="zend.gdata.youtube.html#zend.gdata.youtube.comments">1.10.4. Retrieving video comments</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.youtube.html#zend.gdata.youtube.playlists">1.10.5. Retrieving playlist feeds</a></span></dt>
+<dd><dl>
+<dt><span class="sect3"><a href="zend.gdata.youtube.html#zend.gdata.youtube.playlists.user">1.10.5.1. Retrieving the playlists of a user</a></span></dt>
+<dt><span class="sect3"><a href="zend.gdata.youtube.html#zend.gdata.youtube.playlists.special">1.10.5.2. Retrieving a specific playlist</a></span></dt>
+</dl></dd>
+<dt><span class="sect2"><a href="zend.gdata.youtube.html#zend.gdata.youtube.subscriptions">1.10.6. Retrieving a list of a user's subscriptions</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.youtube.html#zend.gdata.youtube.profile">1.10.7. Retrieving a user's profile</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.youtube.html#zend.gdata.youtube.uploads">1.10.8. Uploading Videos to YouTube</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.youtube.html#zend.gdata.youtube.uploads.browser">1.10.9. Browser-based upload</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.youtube.html#zend.gdata.youtube.uploads.status">1.10.10. Checking upload status</a></span></dt>
+<dt><span class="sect2"><a href="zend.gdata.youtube.html#zend.gdata.youtube.other">1.10.11. Other Functions</a></span></dt>
+</dl></dd>
+<dt><span class="sect1"><a href="zend.gdata.exception.html">1.11. Catching Gdata Exceptions</a></span></dt>
+</dl></dd>
+<dt><span class="index"><a href="the.index.html">Index</a></span></dt>
+</dl>
+</div>
+<div class="list-of-tables">
+<p><b>List of Tables</b></p>
+<dl><dt>1.1. <a href="zend.gdata.youtube.html#zend.gdata.youtube.uploads.metadata">Metadata used in the code-sample below</a>
+</dt></dl>
+</div>
+</div>
+<div class="navfooter"><table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left"> </td>
+<td width="20%" align="center"> </td>
+<td width="40%" align="right"> <a accesskey="n" href="zend.gdata.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top"> </td>
+<td width="20%" align="center"> </td>
+<td width="40%" align="right" valign="top"> Chapter 1. Zend_Gdata</td>
+</tr>
+</table></div>
+<div class="revinfo"></div>
+</body>
+</html>
